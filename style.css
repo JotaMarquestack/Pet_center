@@ -1,5 +1,96 @@
 
+/* Configuração geral do cabeçalho */
 header {
-    /* padding: 10px; */
-    background-color: #D8E5E2/*#E5F2FF*/;
+    background-color: #006653; /* Cor de fundo (que você alterou para o verde depois) */
+    width: 100%;               /* Força o menu a ocupar a largura inteira da tela */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02); /* Aquela sombra bem leve abaixo do menu */
 }
+
+/* O z-index do Header */
+.main-header {
+    z-index: 10; /* Garante que o menu fique sempre "na frente" do fundo se eles se sobrepuserem */
+}
+
+        /* Aqui criamos apelidos para as cores da clínica (ex: verde escuro) e definimos as fontes */
+        :root {
+            --bs-primary: #00685f;
+            --bs-primary-rgb: 0, 104, 95;
+            --bs-body-bg: #f8f9ff;
+            --bs-body-color: #0b1c30;
+            --vc-surface: #ffffff;
+            --vc-outline-variant: #bcc9c6;
+            --vc-text-muted: #3d4947;
+            
+            --font-headline: 'Manrope', sans-serif;
+            --font-body: 'Manrope', sans-serif;
+            --font-label: 'Hanken Grotesk', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bs-body-bg);
+            color: var(--bs-body-color);
+        }
+
+        h1, h2, h3, h4, h5, h6, .text-primary {
+            font-family: var(--font-headline);
+        }
+
+        .btn, label, .vc-label {
+            font-family: var(--font-label);
+        }
+
+        /* Ajustando as cores do botão principal do Bootstrap para usar o nosso verde */
+        .btn-primary {
+            background-color: var(--bs-primary);
+            border-color: var(--bs-primary);
+            color: #ffffff;
+        }
+        .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+            background-color: #005049 !important;
+            border-color: #005049 !important;
+        }
+
+        /* Estilo para os botões secundários (Google e Apple) */
+        .btn-outline-vc {
+            border-color: var(--vc-outline-variant);
+            color: var(--vc-text-muted);
+            background-color: transparent;
+        }
+        .btn-outline-vc:hover {
+            background-color: #eff4ff;
+            color: var(--bs-body-color);
+        }
+
+        /* Ajustando as caixas onde a pessoa digita (inputs) para combinarem com a página */
+        .form-control {
+            border-color: var(--vc-outline-variant);
+            padding: 0.75rem 1rem;
+            font-family: var(--font-body);
+        }
+        .form-control:focus {
+            border-color: var(--bs-primary);
+            box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.2);
+        }
+        .form-check-input:checked {
+            background-color: var(--bs-primary);
+            border-color: var(--bs-primary);
+        }
+        .form-check-input:focus {
+            box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.2);
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .text-vc-muted { color: var(--vc-text-muted); }
+        .focus-label-color { color: var(--bs-primary) !important; }
+        
+        /* Define as proporções da caixa que guarda a imagem de destaque */
+        .image-card-wrapper {
+            aspect-ratio: 4 / 3;
+            border-radius: 1rem;
+            overflow: hidden;
+            position: relative;
+        }
