@@ -6,7 +6,7 @@ while True:
     print("[1] Cadastro do Tutor")
     print("[2] Login do Tutor")
     print("[3] Cadastro do Pet")
-    print("[4] Sair")
+    print("[0] Sair")
     escolha = input ("Escolha uma opção: ")
 
     if escolha == "1":
@@ -17,7 +17,7 @@ while True:
         e = input("Digite seu E-mail: ")
         s = input("Digite sua Senha: ")
 
-        resposta = cadastrar_tutor(n, c, t, e, s)
+        resposta = cadastrar_tutor(c, n, t, e, s)
         print(resposta)
 
     elif escolha == "2":
@@ -36,12 +36,12 @@ while True:
         raca_pet = input("Raça do Pet: ")
         peso_pet = input("Peso do Pet (em Kg): ")
         sexo_pet = input("Sexo (M/F): ").upper()
-        obs = input("Observações Médicas: ")
+        obs_pet = input("Observações Médicas: ")
 
         castrado_input = input("O pet é castrado? (S/N): ")
         is_castrado = castrado_input.upper() == "S"
 
-        resposta = cadastrar_pet(e_tutor, nome_pet, esp, raca_pet, peso_pet, sexo_pet, obs)
+        resposta = cadastrar_pet(e_tutor, nome_pet, esp, raca_pet, peso_pet, is_castrado, sexo_pet, obs_pet)
         print(resposta)
     
     elif escolha == "0":
