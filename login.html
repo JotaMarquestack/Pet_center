@@ -6,14 +6,13 @@
     <link rel="stylesheet" href="style.css">
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Hanken+Grotesk:wght@600;700&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
     
     <title>VetCare</title>
 
     <style>
-        /* VetCare Custom Theme & Font Settings */
+        /* Aqui criamos apelidos para as cores da clínica (ex: verde escuro) e definimos as fontes */
         :root {
             --bs-primary: #00685f;
             --bs-primary-rgb: 0, 104, 95;
@@ -42,7 +41,7 @@
             font-family: var(--font-label);
         }
 
-        /* Customizing Bootstrap Primary Button */
+        /* Ajustando as cores do botão principal do Bootstrap para usar o nosso verde */
         .btn-primary {
             background-color: var(--bs-primary);
             border-color: var(--bs-primary);
@@ -53,7 +52,7 @@
             border-color: #005049 !important;
         }
 
-        /* Custom Secondary/Outline Button for Social Logins */
+        /* Estilo para os botões secundários (Google e Apple) */
         .btn-outline-vc {
             border-color: var(--vc-outline-variant);
             color: var(--vc-text-muted);
@@ -64,7 +63,7 @@
             color: var(--bs-body-color);
         }
 
-        /* Form Controls Customization */
+        /* Ajustando as caixas onde a pessoa digita (inputs) para combinarem com a página */
         .form-control {
             border-color: var(--vc-outline-variant);
             padding: 0.75rem 1rem;
@@ -82,16 +81,14 @@
             box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.2);
         }
 
-        /* Material Icons */
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
 
-        /* Utilities */
         .text-vc-muted { color: var(--vc-text-muted); }
         .focus-label-color { color: var(--bs-primary) !important; }
         
-        /* Image Card Setup */
+        /* Define as proporções da caixa que guarda a imagem de destaque */
         .image-card-wrapper {
             aspect-ratio: 4 / 3;
             border-radius: 1rem;
@@ -114,7 +111,9 @@
                     <a class="btn btn-outline-success btn-sm fw-bold" href="#" role="button">About Us</a>
                     <a class="btn btn-outline-success btn-sm fw-bold" href="#" role="button">Contact</a>
                 </div>
-            
+                <div class="col-12 col-sm-3 d-flex justify-content-center justify-content-sm-end pe-md-4 mt-2 mt-sm-0">
+                    <a class="btn btn-primary fw-bold" href="#" role="button">Marcar Consulta</a>
+                </div>
             </div>
         </section>
     </header>
@@ -179,23 +178,22 @@
                             </p>
                             
                             <div class="row g-2">
-    <div class="col-6">
-        <button class="btn btn-outline-vc w-100 py-2 d-flex align-items-center justify-content-center gap-2 fw-semibold rounded-3">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M15.545 6.558a9.4 9.4 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.7 7.7 0 0 1 5.352 2.082l-2.284 2.284A4.35 4.35 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.8 4.8 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.7 3.7 0 0 0 1.599-2.431H8v-3.08z"/>
-            </svg>
-            Google
-        </button>
-    </div>
-    <div class="col-6">
-        <button class="btn btn-outline-vc w-100 py-2 d-flex align-items-center justify-content-center gap-2 fw-semibold rounded-3">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516.024.034 1.52.087 2.475-1.258.955-1.345.762-2.391.728-2.43Zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422.212-2.189 1.675-2.789 1.698-2.854.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-1.082-.058-2.206.52-2.866.52-.66 0-1.65-.508-2.366-.508C4.656 3.905 3.9 4.315 3.44 4.867 2.22 6.326 1.536 8.514 2.196 11.127c.66 2.613 1.865 4.87 3.013 4.974 1.148.104 1.65-.623 2.89-.623 1.24 0 1.675.623 2.89.623 1.215 0 2.155-2.226 2.766-3.834.61-1.608.204-2.884.18-2.926Z"/>
-            </svg>
-            Apple
-        </button>
-    </div>
-</div>
+                                <div class="col-6">
+                                    <button class="btn btn-outline-vc w-100 py-2 d-flex align-items-center justify-content-center gap-2 fw-semibold rounded-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                                            <path d="M15.545 6.558a9.4 9.4 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.7 7.7 0 0 1 5.352 2.082l-2.284 2.284A4.35 4.35 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.8 4.8 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.7 3.7 0 0 0 1.599-2.431H8v-3.08z"/>
+                                        </svg>
+                                        Google
+                                    </button>
+                                </div>
+                                <div class="col-6">
+                                    <button class="btn btn-outline-vc w-100 py-2 d-flex align-items-center justify-content-center gap-2 fw-semibold rounded-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                                            <path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516.024.034 1.52.087 2.475-1.258.955-1.345.762-2.391.728-2.43Zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422.212-2.189 1.675-2.789 1.698-2.854.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-1.082-.058-2.206.52-2.866.52-.66 0-1.65-.508-2.366-.508C4.656 3.905 3.9 4.315 3.44 4.867 2.22 6.326 1.536 8.514 2.196 11.127c.66 2.613 1.865 4.87 3.013 4.974 1.148.104 1.65-.623 2.89-.623 1.24 0 1.675.623 2.89.623 1.215 0 2.155-2.226 2.766-3.834.61-1.608.204-2.884.18-2.926Z"/>
+                                        </svg>
+                                        Apple
+                                    </button>
+                                </div>
                             </div>
                         </div>
                         
@@ -228,17 +226,17 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmxc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     
     <script>
-        // Micro-interaction for input fields (highlight label on focus)
+        // Esse código pega os campos de texto e deixa o título (label) verde quando a pessoa clica neles
         const inputs = document.querySelectorAll('.form-control');
         inputs.forEach(input => {
-            input.addEventListener('focus', () => {
+            input.addEventListener('focus', () => { // focus = quando clica para digitar
                 const wrapper = input.closest('.input-wrapper');
                 if (wrapper) {
                     const label = wrapper.querySelector('label');
                     if (label) label.classList.add('focus-label-color');
                 }
             });
-            input.addEventListener('blur', () => {
+            input.addEventListener('blur', () => { // blur = quando tira o clique da caixa
                 const wrapper = input.closest('.input-wrapper');
                 if (wrapper) {
                     const label = wrapper.querySelector('label');
