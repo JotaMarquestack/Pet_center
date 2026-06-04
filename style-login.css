@@ -1,0 +1,89 @@
+
+header {
+    background-color: #006653;
+}
+
+
+        /* Guardamos as cores e as fontes do projeto em "caixinhas" com nomes para facilitar o uso */
+        :root {
+            --bs-primary: #00685f; /* Verde escuro principal da clínica */
+            --bs-primary-rgb: 0, 104, 95;
+            --bs-body-bg: #f8f9ff; /* Cor de fundo clarinha da página toda */
+            --bs-body-color: #0b1c30; /* Cor do texto escuro padrão */
+            --vc-surface: #ffffff;
+            --vc-surface-variant: #f8f9ff;
+            --vc-outline-variant: #bcc9c6; /* Cor da bordinha cinza dos campos de texto */
+            --vc-text-muted: #3d4947;
+            
+            --font-headline: 'Manrope', sans-serif; /* Fonte para os títulos grandes */
+            --font-body: 'Manrope', sans-serif; /* Fonte para os textos comuns */
+            --font-label: 'Hanken Grotesk', sans-serif; /* Fonte para botões e pequenos avisos */
+        }
+
+        /* Configurações gerais da página inteira (fundo e cor do texto) */
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bs-body-bg);
+            color: var(--bs-body-color);
+        }
+
+        /* Aplica a fonte de título apenas para as coisas que realmente são títulos ou a logo */
+        h1, h2, h3, h4, h5, h6, .navbar-brand {
+            font-family: var(--font-headline);
+        }
+
+        /* Aplica a fonte de avisos para botões e nomes dos campos de texto */
+        .btn, label, .nav-link {
+            font-family: var(--font-label);
+        }
+
+        /* Pegamos o botão principal do Bootstrap e pintamos ele com o nosso verde da clínica */
+        .btn-primary {
+            background-color: var(--bs-primary);
+            border-color: var(--bs-primary);
+            color: #ffffff;
+        }
+        /* Cor que o botão fica quando a pessoa passa o mouse por cima */
+        .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+            background-color: #005049 !important;
+            border-color: #005049 !important;
+        }
+
+        /* Regras para deixar as caixas onde a pessoa digita (inputs) mais bonitas */
+        .form-control {
+            border-color: var(--vc-outline-variant);
+            padding: 0.75rem 1rem;
+        }
+        /* Aquele contorno verde que aparece quando a pessoa clica pra digitar */
+        .form-control:focus {
+            border-color: var(--bs-primary);
+            box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.25);
+        }
+        
+        /* Pinta a caixinha de "li e aceito os termos" de verde quando é marcada */
+        .form-check-input:checked {
+            background-color: var(--bs-primary);
+            border-color: var(--bs-primary);
+        }
+
+        /* Configuração padrão para os ícones funcionarem direito */
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        /* Altura e cor de fundo do nosso menu lá no topo */
+        .navbar-custom {
+            background-color: var(--vc-surface);
+            height: 80px;
+        }
+        /* Efeito de "vidro fosco" transparente, usado na caixinha de avaliação (avaliação das estrelas) */
+        .glass-card {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        
+        /* Cor para textos mais discretos (ex: "Já tem uma conta?") */
+        .text-vc-muted {
+            color: var(--vc-text-muted);
+        }
