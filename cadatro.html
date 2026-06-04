@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <title>Cadatro</title>
     <meta charset="utf-8"/>
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -11,6 +12,17 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     
     <style>
+        /* Configuração geral do cabeçalho */
+header {
+    background-color: #006653; /* Cor de fundo (que você alterou para o verde depois) */
+    width: 100%;               /* Força o menu a ocupar a largura inteira da tela */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02); /* Aquela sombra bem leve abaixo do menu */
+}
+
+/* O z-index do Header */
+.main-header {
+    z-index: 10; /* Garante que o menu fique sempre "na frente" do fundo se eles se sobrepuserem */
+}
         /* Guardamos as cores e as fontes do projeto em "caixinhas" com nomes para facilitar o uso */
         :root {
             --bs-primary: #00685f; /* Verde escuro principal da clínica */
@@ -99,24 +111,21 @@
 
 <body class="d-flex flex-column min-vh-100">
 
-    <header class="bg-white shadow-sm sticky-top">
-        <section class="container-fluid py-2"> 
+    <header>
+        <section class="container-fluid py-2">
             <div class="row align-items-center">
-                
                 <div class="col-12 col-md-2 d-flex justify-content-center">
-                    <h3 class="text-primary fw-bold mb-0">VetCare</h3>
+                    <h3 class="fw-bold m-0" style="color: #ffffff;">VetCare</h3>
                 </div>
-                
-                <div class="col-12 col-sm-7 d-flex justify-content-sm-center justify-content-center gap-2 mb-2 mb-sm-0">
-                    <a class="btn btn-outline-success btn-sm fw-bold" href="#" role="button">Home</a>
-                    <a class="btn btn-outline-success btn-sm fw-bold" href="#" role="button">Services</a>
-                    <a class="btn btn-outline-success btn-sm fw-bold" href="#" role="button">About Us</a>
-                    <a class="btn btn-outline-success btn-sm fw-bold" href="#" role="button">Contact</a>
-                </div>
-                
-                <div class="col-12 col-sm-3 d-flex justify-content-center justify-content-sm-end">
-                    <a class="btn btn-primary fw-bold" href="#" role="button">Marcar Consulta</a>
-                </div>
+                    <div class="col-12 col-sm-7 d-flex justify-content-sm-center justify-content-center gap-2 mb-2 mb-sm-0">
+                        <a class="btn btn-outline-light btn-sm" href="#" role="button">Home</a>
+                        <a class="btn btn-outline-light btn-sm" href="#" role="button">Services</a>
+                        <a class="btn btn-outline-light btn-sm" href="#" role="button">About Us</a>
+                        <a class="btn btn-outline-light btn-sm" href="#" role="button">Contact</a>
+                    </div>
+                    <div class="col-12 col-sm-3 d-flex justify-content-center justify-content-sm-end">
+                <a class="btn btn-outline-light btn-sm" href="#" role="button">Marcar Consulta</a>
+            </div>
             </div>
         </section>
     </header>
@@ -129,10 +138,10 @@
                     <div class="col-12 col-lg-6 p-4 p-md-5 d-flex flex-column justify-content-center">
                         <div class="mx-auto w-100" style="max-width: 450px;">
                             
-                            <header class="mb-5">
+                            <div class="mb-5">
                                 <h1 class="fw-bold mb-2 fs-2" style="color: var(--bs-body-color);">Comece o cuidado hoje</h1>
                                 <p class="text-vc-muted">Crie sua conta na VetCare Clinical e tenha acesso completo aos serviços de saúde do seu pet.</p>
-                            </header>
+                            </div>
                             
                             <form>
                                 <div class="mb-3">

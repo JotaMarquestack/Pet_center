@@ -4,15 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <style href="style.css"></style>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Hanken+Grotesk:wght@600;700&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
     
-    <title>VetCare</title>
+    <title>Login</title>
 
-    
+    <style>
+        /* CSS para a cor principal dos botões da marca (Verde) */
+        .btn-vetcare {
+            background-color: #006653 !important;
+            border-color: #006653 !important;
+            color: #ffffff !important;
+        }
+        .btn-vetcare:hover {
+            background-color: #004f40 !important;
+            border-color: #004f40 !important;
+            color: #ffffff !important;
+        }
+    </style>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
@@ -30,7 +41,7 @@
                         <a class="btn btn-outline-light btn-sm" href="#" role="button">Contact</a>
                     </div>
                     <div class="col-12 col-sm-3 d-flex justify-content-center justify-content-sm-end">
-                <a class="btn btn-primary" href="#" role="button">Marcar Consulta</a>
+                <a class="btn btn-outline-light btn-sm" href="#" role="button">Marcar Consulta</a>
             </div>
             </div>
         </section>
@@ -85,7 +96,7 @@
                                 <a href="#" class="text-primary fw-semibold text-decoration-none vc-label" style="font-size: 0.9rem;">Esqueci minha senha</a>
                             </div>
                             
-                            <button type="submit" class="btn btn-primary w-100 py-3 rounded-3 fw-bold shadow-sm mb-4">
+                            <button type="submit" class="btn btn-vetcare w-100 py-3 rounded-3 fw-bold shadow-sm mb-4">
                                 Entrar
                             </button>
                         </form>
@@ -144,17 +155,16 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmxc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     
     <script>
-        // Esse código pega os campos de texto e deixa o título (label) verde quando a pessoa clica neles
         const inputs = document.querySelectorAll('.form-control');
         inputs.forEach(input => {
-            input.addEventListener('focus', () => { // focus = quando clica para digitar
+            input.addEventListener('focus', () => {
                 const wrapper = input.closest('.input-wrapper');
                 if (wrapper) {
                     const label = wrapper.querySelector('label');
                     if (label) label.classList.add('focus-label-color');
                 }
             });
-            input.addEventListener('blur', () => { // blur = quando tira o clique da caixa
+            input.addEventListener('blur', () => {
                 const wrapper = input.closest('.input-wrapper');
                 if (wrapper) {
                     const label = wrapper.querySelector('label');
