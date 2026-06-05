@@ -94,3 +94,20 @@ header {
             overflow: hidden;
             position: relative;
         }
+
+      /* CSS Customizado: Cria uma regra só para o botão verde escuro da VetCare */
+      .btn-vetcare {
+        /* Pinta o fundo do botão de verde escuro */
+        background-color: #006653 !important;
+        /* Pinta a bordinha do botão da mesma cor */
+        border-color: #006653 !important;
+        /* Pinta o texto dentro do botão de branco */
+        color: #ffffff !important;
+      }
+      /* Regra para quando a pessoa passar o mouse por cima do botão (hover) */
+      .btn-vetcare:hover {
+        /* Deixa o verde um pouquinho mais escuro para dar efeito de clique */
+        background-color: #004f40 !important;
+        border-color: #004f40 !important;
+        color: #ffffff !important;
+      }
