@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Serviços — Pet Center</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+    <style>
+        :root {
+            --verde: #1a6b4a;
+            --verde-light: #2d9467;
+            --verde-muted: #e8f5ee;
+            --creme: #faf7f2;
+            --creme-dark: #f0ebe0;
+            --marrom: #3d2b1f;
+            --laranja: #e8621a;
+            --laranja-soft: #fff0e8;
+            --cinza: #6b7280;
+            --branco: #ffffff;
+            --sombra: 0 4px 24px rgba(26, 107, 74, .12);
+            --sombra-hover: 0 12px 40px rgba(26, 107, 74, .22);
+            --radius: 16px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--creme);
+            color: var(--marrom);
+            overflow-x: hidden;
+        }
+
+        /* ── HEADER PLACEHOLDER ──────────────────────────────── */
+        /* ⚠️  Quando o @m terminar o header, substitua este bloco
+           pelo componente oficial. Apenas copie o arquivo do
+           header da branch feat/header-footer após o merge na dev. */
+        .header-placeholder {
+            background: var(--verde);
+            color: #fff;
+            text-align: center;
+            padding: 12px;
+            font-size: .85rem;
+            letter-spacing: .04em;
+            font-weight: 500;
+        }
+
+        /* ── HERO / BANNER ───────────────────────────────────── */
+        .banner {
+            position: relative;
+            background: linear-gradient(135deg, var(--verde) 0%, #0f4a32 100%);
+            padding: 80px 24px 100px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .banner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 60% 80% at 20% 50%, rgba(255, 255, 255, .06) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 60% at 80% 20%, rgba(232, 98, 26, .15) 0%, transparent 60%);
+        }
+
+        .banner-paws {
+            position: absolute;
+            font-size: 120px;
+            opacity: .04;
+            top: -20px;
+            right: -20px;
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .banner-tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, .15);
+            color: rgba(255, 255, 255, .85);
+            font-size: .78rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            padding: 6px 18px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, .2);
+            margin-bottom: 20px;
+        }
+
+        .banner h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.4rem, 6vw, 4rem);
+            color: #fff;
+            line-height: 1.15;
+            position: relative;
+        }
+
+        .banner h1 em {
+            font-style: normal;
+            color: #ffd580;
+        }
+
+        .banner p {
+            color: rgba(255, 255, 255, .75);
+            font-size: 1.05rem;
+            max-width: 520px;
+            margin: 16px auto 0;
+            line-height: 1.7;
+            position: relative;
+        }
+
+        .banner-wave {
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+        }
+
+        /* ── NAVEGAÇÃO INTERNA (âncoras) ─────────────────────── */
+        .nav-pills {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            padding: 32px 24px 0;
+            flex-wrap: wrap;
+        }
+
+        .nav-pill {
+            padding: 10px 22px;
+            border-radius: 50px;
+            border: 2px solid var(--verde);
+            color: var(--verde);
+            font-weight: 600;
+            font-size: .9rem;
+            text-decoration: none;
+            transition: all .25s;
+        }
+
+        .nav-pill:hover,
+        .nav-pill.active {
+            background: var(--verde);
+            color: #fff;
+        }
+
+        /* ── SEÇÕES ──────────────────────────────────────────── */
+        .section {
+            padding: 72px 24px;
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        .section+.section {
+            padding-top: 0;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: flex-end;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .section-icon {
+            font-size: 2.8rem;
+            line-height: 1;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            color: var(--verde);
+            line-height: 1.1;
+        }
+
+        .section-header p {
+            color: var(--cinza);
+            font-size: .95rem;
+            margin-top: 6px;
+            font-weight: 300;
+        }
+
+        .section-divider {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--verde) 0%, transparent 70%);
+            margin-bottom: 40px;
+            border-radius: 2px;
+        }
+
+        /* ── CARDS ───────────────────────────────────────────── */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--branco);
+            border-radius: var(--radius);
+            padding: 28px 24px 24px;
+            box-shadow: var(--sombra);
+            transition: transform .3s ease, box-shadow .3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: default;
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--verde), var(--verde-light));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform .35s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--sombra-hover);
+        }
+
+        .card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .card-emoji {
+            font-size: 2.2rem;
+            margin-bottom: 14px;
+            display: block;
+        }
+
+        .card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--marrom);
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            font-size: .88rem;
+            color: var(--cinza);
+            line-height: 1.65;
+            font-weight: 300;
+        }
+
+        /* variante laranja para estética */
+        .card.accent::after {
+            background: linear-gradient(90deg, var(--laranja), #f0882a);
+        }
+
+        .card.accent .card-emoji {
+            filter: none;
+        }
+
+        /* variante destaque para pet shop */
+        .card.shop::after {
+            background: linear-gradient(90deg, #7c5cbf, #a07dd4);
+        }
+
+        /* ── FAIXA SEPARADORA ────────────────────────────────── */
+        .stripe {
+            background: var(--verde-muted);
+            border-top: 1px solid #c8e8d8;
+            border-bottom: 1px solid #c8e8d8;
+            padding: 4px 0;
+            margin: 40px 0;
+        }
+
+        /* ── BADGE "VITRINE" ─────────────────────────────────── */
+        .badge-vitrine {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #f5edff;
+            border: 1px solid #c9a8ef;
+            color: #7c5cbf;
+            font-size: .8rem;
+            font-weight: 600;
+            padding: 5px 14px;
+            border-radius: 50px;
+            margin-bottom: 18px;
+        }
+
+        /* ── CTA FINAL ───────────────────────────────────────── */
+        .cta-section {
+            background: linear-gradient(135deg, var(--laranja) 0%, #c94d08 100%);
+            padding: 72px 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '🐾';
+            position: absolute;
+            font-size: 200px;
+            opacity: .06;
+            bottom: -40px;
+            left: -30px;
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.9rem, 5vw, 3rem);
+            color: #fff;
+            margin-bottom: 14px;
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, .82);
+            font-size: 1rem;
+            margin-bottom: 32px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+
+        .btn-cta {
+            display: inline-block;
+            background: #fff;
+            color: var(--laranja);
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 8px 28px rgba(0, 0, 0, .18);
+            transition: transform .25s, box-shadow .25s;
+            letter-spacing: .02em;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 14px 36px rgba(0, 0, 0, .22);
+        }
+
+        /* ── FOOTER PLACEHOLDER ──────────────────────────────── */
+        /* ⚠️  Substituir pelo componente oficial quando @m finalizar */
+        .footer-placeholder {
+            background: var(--marrom);
+            color: rgba(255, 255, 255, .5);
+            text-align: center;
+            padding: 20px;
+            font-size: .82rem;
+        }
+
+        /* ── ANIMAÇÕES DE ENTRADA ────────────────────────────── */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity .6s ease, transform .6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── RESPONSIVO ──────────────────────────────────────── */
+        @media (max-width: 600px) {
+            .banner {
+                padding: 60px 20px 80px;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .section {
+                padding: 52px 20px;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ══ HEADER PLACEHOLDER ══════════════════════════════════ -->
+    <!-- TODO: substituir pelo header oficial do @m após merge na dev -->
+    <div class="header-placeholder">
+        🐾 PET CENTER — [ Header oficial será inserido aqui após merge do feat/header-footer ]
+    </div>
+
+    <!-- ══ BANNER ══════════════════════════════════════════════ -->
+    <section class="banner">
+        <div class="banner-paws">🐾</div>
+        <div class="banner-tag">O que oferecemos</div>
+        <h1>Nossos <em>Serviços</em></h1>
+        <p>Cuidado completo para o seu pet — da consulta ao banho, do pet shop à especialidade médica.</p>
+        <svg class="banner-wave" viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,40 C360,80 1080,0 1440,40 L1440,60 L0,60 Z" fill="#faf7f2" />
+        </svg>
+    </section>
+
+    <!-- ══ NAVEGAÇÃO INTERNA ════════════════════════════════════ -->
+    <nav class="nav-pills" aria-label="Categorias de serviços">
+        <a href="#clinica" class="nav-pill">🏥 Clínica Veterinária</a>
+        <a href="#estetica" class="nav-pill">✂️ Estética Pet</a>
+        <a href="#petshop" class="nav-pill">🛍️ Pet Shop</a>
+    </nav>
+
+    <!-- ══ CLÍNICA VETERINÁRIA ══════════════════════════════════ -->
+    <section class="section" id="clinica">
+        <div class="section-header fade-in">
+            <span class="section-icon">🏥</span>
+            <div>
+                <h2>Clínica Veterinária</h2>
+                <p>Medicina veterinária de qualidade com profissionais especializados</p>
+            </div>
+        </div>
+        <div class="section-divider"></div>
+        <div class="cards-grid">
+            <div class="card fade-in">
+                <span class="card-emoji">🩺</span>
+                <h3>Consultas</h3>
+                <p>Atendimento clínico geral para cães e gatos, com avaliação completa de saúde e bem-estar.</p>
+            </div>
+            <div class="card fade-in">
+                <span class="card-emoji">💉</span>
+                <h3>Vacinas</h3>
+                <p>Protocolo vacinal completo e atualizado, com carteira de vacinação e agendamento de reforços.</p>
+            </div>
+            <div class="card fade-in">
+                <span class="card-emoji">🔬</span>
+                <h3>Exames</h3>
+                <p>Exames laboratoriais, hemograma, ultrassom e outros diagnósticos para um cuidado preciso.</p>
+            </div>
+            <div class="card fade-in">
+                <span class="card-emoji">⭐</span>
+                <h3>Especialidades</h3>
+                <p>Dermatologia, cardiologia, cirurgia e outras especialidades com veterinários certificados.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="stripe"></div>
+
+    <!-- ══ ESTÉTICA PET ══════════════════════════════════════════ -->
+    <section class="section" id="estetica">
+        <div class="section-header fade-in">
+            <span class="section-icon">✂️</span>
+            <div>
+                <h2>Estética Pet</h2>
+                <p>Banho, tosa e cuidados estéticos com carinho e profissionalismo</p>
+            </div>
+        </div>
+        <div class="section-divider"></div>
+        <div class="cards-grid">
+            <div class="card accent fade-in">
+                <span class="card-emoji">🛁</span>
+                <h3>Banho</h3>
+                <p>Banho completo com produtos hipoalergênicos, secagem e perfume especial para pets.</p>
+            </div>
+            <div class="card accent fade-in">
+                <span class="card-emoji">✂️</span>
+                <h3>Tosa</h3>
+                <p>Tosa higiênica ou modelada, adequada para cada raça, deixando seu pet confortável e elegante.</p>
+            </div>
+            <div class="card accent fade-in">
+                <span class="card-emoji">💆</span>
+                <h3>Hidratação</h3>
+                <p>Tratamento profundo para pelo e pele, com máscaras e óleos que devolvem brilho e maciez.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="stripe"></div>
+
+    <!-- ══ PET SHOP ══════════════════════════════════════════════ -->
+    <section class="section" id="petshop">
+        <div class="section-header fade-in">
+            <span class="section-icon">🛍️</span>
+            <div>
+                <h2>Pet Shop</h2>
+                <p>Produtos selecionados para o dia a dia do seu pet</p>
+            </div>
+        </div>
+        <div class="section-divider"></div>
+        <span class="badge-vitrine">🏪 Vitrine — visite-nos para adquirir</span>
+        <div class="cards-grid">
+            <div class="card shop fade-in">
+                <span class="card-emoji">🥩</span>
+                <h3>Rações</h3>
+                <p>Rações premium e super premium para cães e gatos, selecionadas por nossos veterinários.</p>
+            </div>
+            <div class="card shop fade-in">
+                <span class="card-emoji">💊</span>
+                <h3>Medicamentos</h3>
+                <p>Antiparasitários, suplementos e medicamentos veterinários com orientação especializada.</p>
+            </div>
+            <div class="card shop fade-in">
+                <span class="card-emoji">🎾</span>
+                <h3>Acessórios</h3>
+                <p>Coleiras, brinquedos, camas, bebedouros e tudo que o seu pet precisa para uma vida feliz.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ CTA ══════════════════════════════════════════════════ -->
+    <section class="cta-section">
+        <h2>Pronto para agendar?</h2>
+        <p>Marque a consulta ou serviço do seu pet em poucos minutos, sem complicação.</p>
+        <!-- Link apontando para a tela de agendamento (rota a definir com @Pedro/@Victor) -->
+        <a href="agendamento.html" class="btn-cta">Agendar Agora →</a>
+    </section>
+
+    <!-- ══ FOOTER PLACEHOLDER ═══════════════════════════════════ -->
+    <!-- TODO: substituir pelo footer oficial do @m após merge na dev -->
+    <footer class="footer-placeholder">
+        [ Footer oficial será inserido aqui após merge do feat/header-footer ] — © 2026 Pet Center
+    </footer>
+
+    <!-- ══ SCRIPT: ANIMAÇÕES DE SCROLL ══════════════════════════ -->
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    // stagger: cada card dentro de um grupo atrasa um pouco
+                    const siblings = entry.target.parentElement.querySelectorAll('.fade-in');
+                    siblings.forEach((el, idx) => {
+                        setTimeout(() => el.classList.add('visible'), idx * 80);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Pill ativa conforme scroll
+        const sections = document.querySelectorAll('section[id]');
+        const pills = document.querySelectorAll('.nav-pill');
+        const pillObs = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    pills.forEach(p => p.classList.remove('active'));
+                    const active = document.querySelector(`.nav-pill[href="#${e.target.id}"]`);
+                    if (active) active.classList.add('active');
+                }
+            });
+        }, { rootMargin: '-40% 0px -50% 0px' });
+
+        sections.forEach(s => pillObs.observe(s));
+    </script>
+
+</body>
+
+</html>
