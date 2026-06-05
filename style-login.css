@@ -1,89 +1,113 @@
 
+/* Configuração geral do cabeçalho */
 header {
-    background-color: #006653;
+    background-color: #006653; /* Cor de fundo (que você alterou para o verde depois) */
+    width: 100%;               /* Força o menu a ocupar a largura inteira da tela */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02); /* Aquela sombra bem leve abaixo do menu */
 }
 
+/* O z-index do Header */
+.main-header {
+    z-index: 10; /* Garante que o menu fique sempre "na frente" do fundo se eles se sobrepuserem */
+}
 
-        /* Guardamos as cores e as fontes do projeto em "caixinhas" com nomes para facilitar o uso */
+        /* Aqui criamos apelidos para as cores da clínica (ex: verde escuro) e definimos as fontes */
         :root {
-            --bs-primary: #00685f; /* Verde escuro principal da clínica */
+            --bs-primary: #00685f;
             --bs-primary-rgb: 0, 104, 95;
-            --bs-body-bg: #f8f9ff; /* Cor de fundo clarinha da página toda */
-            --bs-body-color: #0b1c30; /* Cor do texto escuro padrão */
+            --bs-body-bg: #f8f9ff;
+            --bs-body-color: #0b1c30;
             --vc-surface: #ffffff;
-            --vc-surface-variant: #f8f9ff;
-            --vc-outline-variant: #bcc9c6; /* Cor da bordinha cinza dos campos de texto */
+            --vc-outline-variant: #bcc9c6;
             --vc-text-muted: #3d4947;
             
-            --font-headline: 'Manrope', sans-serif; /* Fonte para os títulos grandes */
-            --font-body: 'Manrope', sans-serif; /* Fonte para os textos comuns */
-            --font-label: 'Hanken Grotesk', sans-serif; /* Fonte para botões e pequenos avisos */
+            --font-headline: 'Manrope', sans-serif;
+            --font-body: 'Manrope', sans-serif;
+            --font-label: 'Hanken Grotesk', sans-serif;
         }
 
-        /* Configurações gerais da página inteira (fundo e cor do texto) */
         body {
             font-family: var(--font-body);
             background-color: var(--bs-body-bg);
             color: var(--bs-body-color);
         }
 
-        /* Aplica a fonte de título apenas para as coisas que realmente são títulos ou a logo */
-        h1, h2, h3, h4, h5, h6, .navbar-brand {
+        h1, h2, h3, h4, h5, h6, .text-primary {
             font-family: var(--font-headline);
         }
 
-        /* Aplica a fonte de avisos para botões e nomes dos campos de texto */
-        .btn, label, .nav-link {
+        .btn, label, .vc-label {
             font-family: var(--font-label);
         }
 
-        /* Pegamos o botão principal do Bootstrap e pintamos ele com o nosso verde da clínica */
+        /* Ajustando as cores do botão principal do Bootstrap para usar o nosso verde */
         .btn-primary {
             background-color: var(--bs-primary);
             border-color: var(--bs-primary);
             color: #ffffff;
         }
-        /* Cor que o botão fica quando a pessoa passa o mouse por cima */
         .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
             background-color: #005049 !important;
             border-color: #005049 !important;
         }
 
-        /* Regras para deixar as caixas onde a pessoa digita (inputs) mais bonitas */
+        /* Estilo para os botões secundários (Google e Apple) */
+        .btn-outline-vc {
+            border-color: var(--vc-outline-variant);
+            color: var(--vc-text-muted);
+            background-color: transparent;
+        }
+        .btn-outline-vc:hover {
+            background-color: #eff4ff;
+            color: var(--bs-body-color);
+        }
+
+        /* Ajustando as caixas onde a pessoa digita (inputs) para combinarem com a página */
         .form-control {
             border-color: var(--vc-outline-variant);
             padding: 0.75rem 1rem;
+            font-family: var(--font-body);
         }
-        /* Aquele contorno verde que aparece quando a pessoa clica pra digitar */
         .form-control:focus {
             border-color: var(--bs-primary);
-            box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.25);
+            box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.2);
         }
-        
-        /* Pinta a caixinha de "li e aceito os termos" de verde quando é marcada */
         .form-check-input:checked {
             background-color: var(--bs-primary);
             border-color: var(--bs-primary);
         }
+        .form-check-input:focus {
+            box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.2);
+        }
 
-        /* Configuração padrão para os ícones funcionarem direito */
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
 
-        /* Altura e cor de fundo do nosso menu lá no topo */
-        .navbar-custom {
-            background-color: var(--vc-surface);
-            height: 80px;
-        }
-        /* Efeito de "vidro fosco" transparente, usado na caixinha de avaliação (avaliação das estrelas) */
-        .glass-card {
-            background-color: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-        }
+        .text-vc-muted { color: var(--vc-text-muted); }
+        .focus-label-color { color: var(--bs-primary) !important; }
         
-        /* Cor para textos mais discretos (ex: "Já tem uma conta?") */
-        .text-vc-muted {
-            color: var(--vc-text-muted);
+        /* Define as proporções da caixa que guarda a imagem de destaque */
+        .image-card-wrapper {
+            aspect-ratio: 4 / 3;
+            border-radius: 1rem;
+            overflow: hidden;
+            position: relative;
         }
+
+      /* CSS Customizado: Cria uma regra só para o botão verde escuro da VetCare */
+      .btn-vetcare {
+        /* Pinta o fundo do botão de verde escuro */
+        background-color: #006653 !important;
+        /* Pinta a bordinha do botão da mesma cor */
+        border-color: #006653 !important;
+        /* Pinta o texto dentro do botão de branco */
+        color: #ffffff !important;
+      }
+      /* Regra para quando a pessoa passar o mouse por cima do botão (hover) */
+      .btn-vetcare:hover {
+        /* Deixa o verde um pouquinho mais escuro para dar efeito de clique */
+        background-color: #004f40 !important;
+        border-color: #004f40 !important;
+        color: #ffffff !important;
+      }
