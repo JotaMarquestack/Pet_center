@@ -1,5 +1,12 @@
 
+/* Configuração geral do cabeçalho */
 header {
-    /* padding: 10px; */
-    background-color: #D8E5E2/*#E5F2FF*/;
+    background-color: #006653; /* Cor de fundo (que você alterou para o verde depois) */
+    width: 100%;               /* Força o menu a ocupar a largura inteira da tela */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02); /* Aquela sombra bem leve abaixo do menu */
+}  
+
+/* O z-index do Header */
+.main-header {
+    z-index: 10; /* Garante que o menu fique sempre "na frente" do fundo se eles se sobrepuserem */
 }
