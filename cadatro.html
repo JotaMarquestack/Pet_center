@@ -1,253 +1,444 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
+  <head>
     <title>Cadatro</title>
-    <meta charset="utf-8"/>
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Hanken+Grotesk:wght@600;700&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Hanken+Grotesk:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
     <style>
-        /* Configuração geral do cabeçalho */
-header {
-    background-color: #006653; /* Cor de fundo (que você alterou para o verde depois) */
-    width: 100%;               /* Força o menu a ocupar a largura inteira da tela */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.02); /* Aquela sombra bem leve abaixo do menu */
-}
+      /* Configuração geral do cabeçalho */
+      header {
+        background-color: #006653; /* Cor de fundo (que você alterou para o verde depois) */
+        width: 100%; /* Força o menu a ocupar a largura inteira da tela */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02); /* Aquela sombra bem leve abaixo do menu */
+      }
 
-/* O z-index do Header */
-.main-header {
-    z-index: 10; /* Garante que o menu fique sempre "na frente" do fundo se eles se sobrepuserem */
-}
-        /* Guardamos as cores e as fontes do projeto em "caixinhas" com nomes para facilitar o uso */
-        :root {
-            --bs-primary: #00685f; /* Verde escuro principal da clínica */
-            --bs-primary-rgb: 0, 104, 95;
-            --bs-body-bg: #f8f9ff; /* Cor de fundo clarinha da página toda */
-            --bs-body-color: #0b1c30; /* Cor do texto escuro padrão */
-            --vc-surface: #ffffff;
-            --vc-surface-variant: #f8f9ff;
-            --vc-outline-variant: #bcc9c6; /* Cor da bordinha cinza dos campos de texto */
-            --vc-text-muted: #3d4947;
-            
-            --font-headline: 'Manrope', sans-serif; /* Fonte para os títulos grandes */
-            --font-body: 'Manrope', sans-serif; /* Fonte para os textos comuns */
-            --font-label: 'Hanken Grotesk', sans-serif; /* Fonte para botões e pequenos avisos */
-        }
+      /* O z-index do Header */
+      .main-header {
+        z-index: 10; /* Garante que o menu fique sempre "na frente" do fundo se eles se sobrepuserem */
+      }
+      /* Guardamos as cores e as fontes do projeto em "caixinhas" com nomes para facilitar o uso */
+      :root {
+        --bs-primary: #00685f; /* Verde escuro principal da clínica */
+        --bs-primary-rgb: 0, 104, 95;
+        --bs-body-bg: #f8f9ff; /* Cor de fundo clarinha da página toda */
+        --bs-body-color: #0b1c30; /* Cor do texto escuro padrão */
+        --vc-surface: #ffffff;
+        --vc-surface-variant: #f8f9ff;
+        --vc-outline-variant: #bcc9c6; /* Cor da bordinha cinza dos campos de texto */
+        --vc-text-muted: #3d4947;
 
-        /* Configurações gerais da página inteira (fundo e cor do texto) */
-        body {
-            font-family: var(--font-body);
-            background-color: var(--bs-body-bg);
-            color: var(--bs-body-color);
-        }
+        --font-headline:
+          "Manrope", sans-serif; /* Fonte para os títulos grandes */
+        --font-body: "Manrope", sans-serif; /* Fonte para os textos comuns */
+        --font-label:
+          "Hanken Grotesk", sans-serif; /* Fonte para botões e pequenos avisos */
+      }
 
-        /* Aplica a fonte de título apenas para as coisas que realmente são títulos ou a logo */
-        h1, h2, h3, h4, h5, h6, .navbar-brand {
-            font-family: var(--font-headline);
-        }
+      /* Configurações gerais da página inteira (fundo e cor do texto) */
+      body {
+        font-family: var(--font-body);
+        background-color: var(--bs-body-bg);
+        color: var(--bs-body-color);
+      }
 
-        /* Aplica a fonte de avisos para botões e nomes dos campos de texto */
-        .btn, label, .nav-link {
-            font-family: var(--font-label);
-        }
+      /* Aplica a fonte de título apenas para as coisas que realmente são títulos ou a logo */
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      .navbar-brand {
+        font-family: var(--font-headline);
+      }
 
-        /* Pegamos o botão principal do Bootstrap e pintamos ele com o nosso verde da clínica */
-        .btn-primary {
-            background-color: var(--bs-primary);
-            border-color: var(--bs-primary);
-            color: #ffffff;
-        }
-        /* Cor que o botão fica quando a pessoa passa o mouse por cima */
-        .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
-            background-color: #005049 !important;
-            border-color: #005049 !important;
-        }
+      /* Aplica a fonte de avisos para botões e nomes dos campos de texto */
+      .btn,
+      label,
+      .nav-link {
+        font-family: var(--font-label);
+      }
 
-        /* Regras para deixar as caixas onde a pessoa digita (inputs) mais bonitas */
-        .form-control {
-            border-color: var(--vc-outline-variant);
-            padding: 0.75rem 1rem;
-        }
-        /* Aquele contorno verde que aparece quando a pessoa clica pra digitar */
-        .form-control:focus {
-            border-color: var(--bs-primary);
-            box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.25);
-        }
-        
-        /* Pinta a caixinha de "li e aceito os termos" de verde quando é marcada */
-        .form-check-input:checked {
-            background-color: var(--bs-primary);
-            border-color: var(--bs-primary);
-        }
+      /* Pegamos o botão principal do Bootstrap e pintamos ele com o nosso verde da clínica */
+      .btn-primary {
+        background-color: var(--bs-primary);
+        border-color: var(--bs-primary);
+        color: #ffffff;
+      }
+      /* Cor que o botão fica quando a pessoa passa o mouse por cima */
+      .btn-primary:hover,
+      .btn-primary:focus,
+      .btn-primary:active {
+        background-color: #005049 !important;
+        border-color: #005049 !important;
+      }
 
-        /* Configuração padrão para os ícones funcionarem direito */
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
+      /* Regras para deixar as caixas onde a pessoa digita (inputs) mais bonitas */
+      .form-control {
+        border-color: var(--vc-outline-variant);
+        padding: 0.75rem 1rem;
+      }
+      /* Aquele contorno verde que aparece quando a pessoa clica pra digitar */
+      .form-control:focus {
+        border-color: var(--bs-primary);
+        box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.25);
+      }
 
-        /* Altura e cor de fundo do nosso menu lá no topo */
-        .navbar-custom {
-            background-color: var(--vc-surface);
-            height: 80px;
-        }
-        /* Efeito de "vidro fosco" transparente, usado na caixinha de avaliação (avaliação das estrelas) */
-        .glass-card {
-            background-color: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-        }
-        
-        /* Cor para textos mais discretos (ex: "Já tem uma conta?") */
-        .text-vc-muted {
-            color: var(--vc-text-muted);
-        }
+      /* Pinta a caixinha de "li e aceito os termos" de verde quando é marcada */
+      .form-check-input:checked {
+        background-color: var(--bs-primary);
+        border-color: var(--bs-primary);
+      }
+
+      /* Configuração padrão para os ícones funcionarem direito */
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+
+      /* Altura e cor de fundo do nosso menu lá no topo */
+      .navbar-custom {
+        background-color: var(--vc-surface);
+        height: 80px;
+      }
+      /* Efeito de "vidro fosco" transparente, usado na caixinha de avaliação (avaliação das estrelas) */
+      .glass-card {
+        background-color: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+      }
+
+      /* Cor para textos mais discretos (ex: "Já tem uma conta?") */
+      .text-vc-muted {
+        color: var(--vc-text-muted);
+      }
     </style>
-</head>
+  </head>
 
-<body class="d-flex flex-column min-vh-100">
-
+  <body class="d-flex flex-column min-vh-100">
     <header>
-        <section class="container-fluid py-2">
-            <div class="row align-items-center">
-                <div class="col-12 col-md-2 d-flex justify-content-center">
-                    <h3 class="fw-bold m-0" style="color: #ffffff;">VetCare</h3>
-                </div>
-                    <div class="col-12 col-sm-7 d-flex justify-content-sm-center justify-content-center gap-2 mb-2 mb-sm-0">
-                        <a class="btn btn-outline-light btn-sm" href="#" role="button">Home</a>
-                        <a class="btn btn-outline-light btn-sm" href="#" role="button">Services</a>
-                        <a class="btn btn-outline-light btn-sm" href="#" role="button">About Us</a>
-                        <a class="btn btn-outline-light btn-sm" href="#" role="button">Contact</a>
-                    </div>
-                    <div class="col-12 col-sm-3 d-flex justify-content-center justify-content-sm-end">
-                <a class="btn btn-outline-light btn-sm" href="#" role="button">Marcar Consulta</a>
-            </div>
-            </div>
-        </section>
+      <section class="container-fluid py-2">
+        <div class="row align-items-center">
+          <div class="col-12 col-md-2 d-flex justify-content-center">
+            <h3 class="fw-bold m-0" style="color: #ffffff">VetCare</h3>
+          </div>
+          <div
+            class="col-12 col-sm-7 d-flex justify-content-sm-center justify-content-center gap-2 mb-2 mb-sm-0"
+          >
+            <a class="btn btn-outline-light btn-sm" href="#" role="button"
+              >Home</a
+            >
+            <a class="btn btn-outline-light btn-sm" href="#" role="button"
+              >Services</a
+            >
+            <a class="btn btn-outline-light btn-sm" href="#" role="button"
+              >About Us</a
+            >
+            <a class="btn btn-outline-light btn-sm" href="#" role="button"
+              >Contact</a
+            >
+          </div>
+          <div
+            class="col-12 col-sm-3 d-flex justify-content-center justify-content-sm-end"
+          >
+            <a class="btn btn-outline-light btn-sm" href="#" role="button"
+              >Marcar Consulta</a
+            >
+          </div>
+        </div>
+      </section>
     </header>
 
-    <main class="flex-grow-1 d-flex align-items-center justify-content-center pt-5">
-        <div class="container-xl py-5">
-            <div class="card shadow-sm border border-light overflow-hidden rounded-4" style="min-height: 700px;">
-                <div class="row g-0 h-100">
-                    
-                    <div class="col-12 col-lg-6 p-4 p-md-5 d-flex flex-column justify-content-center">
-                        <div class="mx-auto w-100" style="max-width: 450px;">
-                            
-                            <div class="mb-5">
-                                <h1 class="fw-bold mb-2 fs-2" style="color: var(--bs-body-color);">Comece o cuidado hoje</h1>
-                                <p class="text-vc-muted">Crie sua conta na VetCare Clinical e tenha acesso completo aos serviços de saúde do seu pet.</p>
-                            </div>
-                            
-                            <form>
-                                <div class="mb-3">
-                                    <label for="name" class="form-label text-vc-muted text-uppercase fw-bold" style="font-size: 0.85rem; letter-spacing: 0.05em;">Nome Completo</label>
-                                    <input type="text" class="form-control rounded-3" id="name" placeholder="Ex: João Silva" required>
-                                </div>
-                                
-                                <div class="mb-3">
-                                    <label for="email" class="form-label text-vc-muted text-uppercase fw-bold" style="font-size: 0.85rem; letter-spacing: 0.05em;">E-mail</label>
-                                    <input type="email" class="form-control rounded-3" id="email" placeholder="joao@exemplo.com" required>
-                                </div>
-                                
-                                <div class="row g-3 mb-3">
-                                    <div class="col-md-6">
-                                        <label for="phone" class="form-label text-vc-muted text-uppercase fw-bold" style="font-size: 0.85rem; letter-spacing: 0.05em;">Telefone</label>
-                                        <input type="tel" class="form-control rounded-3" id="phone" placeholder="(11) 99999-9999" required>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="password" class="form-label text-vc-muted text-uppercase fw-bold" style="font-size: 0.85rem; letter-spacing: 0.05em;">Senha</label>
-                                        <input type="password" class="form-control rounded-3" id="password" placeholder="••••••••" required>
-                                    </div>
-                                </div>
-                                
-                                <div class="form-check mb-4 mt-3 d-flex align-items-start gap-2">
-                                    <input class="form-check-input shadow-none mt-1" type="checkbox" id="terms" required>
-                                    <label class="form-check-label text-vc-muted" for="terms" style="font-size: 0.9rem;">
-                                        Eu concordo com os <a href="#" class="text-primary fw-bold text-decoration-none">Termos de Uso</a> e a <a href="#" class="text-primary fw-bold text-decoration-none">Política de Privacidade</a> da VetCare.
-                                    </label>
-                                </div>
-                                
-                                <button type="submit" class="btn btn-primary w-100 py-3 rounded-3 fw-bold shadow-sm">
-                                    Criar Conta
-                                </button>
-                            </form>
-                            <div class="mt-5 text-center">
-                                <p class="text-vc-muted">
-                                    Já tem uma conta? <a href="#" class="text-primary fw-bold text-decoration-none">Faça login aqui</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-12 col-lg-6 d-none d-lg-block position-relative bg-light">
-                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0Nh6UBdCAzw58ygHCVECkCrGwEwOz7G1FUf0ygFNFS20zJNxOgc1WZyAu4nw7KzJQ1WAjJcFri1MQiGz9yXtNjBNF5PC-tllTvnVkGscRQocRAkpwLDUcIV5-tQbn3UPZs9Cekzj4jXjCdY-u60ZjtrcLD4bI_vNenqMVr7UiWI29sGHn82CdxHEDmbVeZQXHk862Oci4Mkd3Sy5qYEuFzrreuP4eer38D54Kir6gBDyCaR9ogN13f-eR1DSmBVxKJ9OjBJqIduQ" alt="Veterinarian with dog" class="position-absolute w-100 h-100 object-fit-cover">
-                        
-                        <div class="position-absolute w-100 h-100" style="background: linear-gradient(to top, rgba(0, 104, 95, 0.4), transparent);"></div>
-                        
-                        <div class="position-absolute bottom-0 start-0 end-0 m-5 p-4 rounded-4 shadow-lg glass-card">
-                            <div class="d-flex gap-1 mb-2">
-                                <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
-                                <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
-                                <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
-                                <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
-                                <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
-                            </div>
-                            <p class="fs-4 fw-semibold text-dark mb-1 fst-italic" style="font-family: var(--font-headline);">"O melhor cuidado clínico para o meu pet."</p>
-                            <p class="mb-0 text-vc-muted fw-bold" style="font-size: 0.9rem;">— Dra. Marina Costa, Tutora do Max</p>
-                        </div>
-                    </div>
-                    
+    <main
+      class="flex-grow-1 d-flex align-items-center justify-content-center pt-5"
+    >
+      <div class="container-xl py-5">
+        <div
+          class="card shadow-sm border border-light overflow-hidden rounded-4"
+          style="min-height: 700px"
+        >
+          <div class="row g-0 h-100">
+            <div
+              class="col-12 col-lg-6 p-4 p-md-5 d-flex flex-column justify-content-center"
+            >
+              <div class="mx-auto w-100" style="max-width: 450px">
+                <div class="mb-5">
+                  <h1
+                    class="fw-bold mb-2 fs-2"
+                    style="color: var(--bs-body-color)"
+                  >
+                    Comece o cuidado hoje
+                  </h1>
+                  <p class="text-vc-muted">
+                    Crie sua conta na VetCare Clinical e tenha acesso completo
+                    aos serviços de saúde do seu pet.
+                  </p>
                 </div>
+
+                <form>
+                  <div class="mb-3">
+                    <label
+                      for="name"
+                      class="form-label text-vc-muted text-uppercase fw-bold"
+                      style="font-size: 0.85rem; letter-spacing: 0.05em"
+                      >Nome Completo</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control rounded-3"
+                      id="name"
+                      placeholder="Ex: João Silva"
+                      required
+                    />
+                  </div>
+
+                  <div class="mb-3">
+                    <label
+                      for="name"
+                      class="form-label text-vc-muted text-uppercase fw-bold"
+                      style="font-size: 0.85rem; letter-spacing: 0.05em"
+                      >CPF</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control rounded-3"
+                      id="name"
+                      placeholder="Ex: xxx.xxx.xxx-xx"
+                      required
+                    />
+                  </div>
+
+                  <div class="mb-3">
+                    <label
+                      for="email"
+                      class="form-label text-vc-muted text-uppercase fw-bold"
+                      style="font-size: 0.85rem; letter-spacing: 0.05em"
+                      >E-mail</label
+                    >
+                    <input
+                      type="email"
+                      class="form-control rounded-3"
+                      id="email"
+                      placeholder="joao@exemplo.com"
+                      required
+                    />
+                  </div>
+
+                  <div class="row g-3 mb-3">
+                    <div class="col-md-6">
+                      <label
+                        for="phone"
+                        class="form-label text-vc-muted text-uppercase fw-bold"
+                        style="font-size: 0.85rem; letter-spacing: 0.05em"
+                        >Telefone</label
+                      >
+                      <input
+                        type="tel"
+                        class="form-control rounded-3"
+                        id="phone"
+                        placeholder="(11) 99999-9999"
+                        required
+                      />
+                    </div>
+                    <div class="col-md-6">
+                      <label
+                        for="password"
+                        class="form-label text-vc-muted text-uppercase fw-bold"
+                        style="font-size: 0.85rem; letter-spacing: 0.05em"
+                        >Senha</label
+                      >
+                      <input
+                        type="password"
+                        class="form-control rounded-3"
+                        id="password"
+                        placeholder="••••••••"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div
+                    class="form-check mb-4 mt-3 d-flex align-items-start gap-2"
+                  >
+                    <input
+                      class="form-check-input shadow-none mt-1"
+                      type="checkbox"
+                      id="terms"
+                      required
+                    />
+                    <label
+                      class="form-check-label text-vc-muted"
+                      for="terms"
+                      style="font-size: 0.9rem"
+                    >
+                      Eu concordo com os
+                      <a
+                        href="#"
+                        class="text-primary fw-bold text-decoration-none"
+                        >Termos de Uso</a
+                      >
+                      e a
+                      <a
+                        href="#"
+                        class="text-primary fw-bold text-decoration-none"
+                        >Política de Privacidade</a
+                      >
+                      da VetCare.
+                    </label>
+                  </div>
+
+                  <button
+                    type="submit"
+                    class="btn btn-primary w-100 py-3 rounded-3 fw-bold shadow-sm"
+                  >
+                    Criar Conta
+                  </button>
+                </form>
+                <div class="mt-5 text-center">
+                  <p class="text-vc-muted">
+                    Já tem uma conta?
+                    <a
+                      href="login.html"
+                      class="text-primary fw-bold text-decoration-none"
+                      >Faça login aqui</a
+                    >
+                  </p>
+                </div>
+              </div>
             </div>
+
+            <div
+              class="col-12 col-lg-6 d-none d-lg-block position-relative bg-light"
+            >
+              <img
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0Nh6UBdCAzw58ygHCVECkCrGwEwOz7G1FUf0ygFNFS20zJNxOgc1WZyAu4nw7KzJQ1WAjJcFri1MQiGz9yXtNjBNF5PC-tllTvnVkGscRQocRAkpwLDUcIV5-tQbn3UPZs9Cekzj4jXjCdY-u60ZjtrcLD4bI_vNenqMVr7UiWI29sGHn82CdxHEDmbVeZQXHk862Oci4Mkd3Sy5qYEuFzrreuP4eer38D54Kir6gBDyCaR9ogN13f-eR1DSmBVxKJ9OjBJqIduQ"
+                alt="Veterinarian with dog"
+                class="position-absolute w-100 h-100 object-fit-cover"
+              />
+
+              <div
+                class="position-absolute w-100 h-100"
+                style="
+                  background: linear-gradient(
+                    to top,
+                    rgba(0, 104, 95, 0.4),
+                    transparent
+                  );
+                "
+              ></div>
+
+              <div
+                class="position-absolute bottom-0 start-0 end-0 m-5 p-4 rounded-4 shadow-lg glass-card"
+              >
+                <div class="d-flex gap-1 mb-2">
+                  <span
+                    class="material-symbols-outlined text-primary"
+                    style="font-variation-settings: &quot;FILL&quot; 1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary"
+                    style="font-variation-settings: &quot;FILL&quot; 1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary"
+                    style="font-variation-settings: &quot;FILL&quot; 1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary"
+                    style="font-variation-settings: &quot;FILL&quot; 1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary"
+                    style="font-variation-settings: &quot;FILL&quot; 1"
+                    >star</span
+                  >
+                </div>
+                <p
+                  class="fs-4 fw-semibold text-dark mb-1 fst-italic"
+                  style="font-family: var(--font-headline)"
+                >
+                  "O melhor cuidado clínico para o meu pet."
+                </p>
+                <p class="mb-0 text-vc-muted fw-bold" style="font-size: 0.9rem">
+                  — Marina Costa, Tutora do Popito.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </main>
 
     <footer class="border-top bg-white mt-auto">
-        <div class="container-xl py-4 py-md-5 d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
-            
-            <div class="d-flex flex-column align-items-center align-items-md-start">
-                <div class="fs-5 fw-bold text-primary mb-1">
-                    VetCare Clinical
-                </div>
-                <p class="small text-vc-muted mb-0 text-center text-md-start">
-                    © 2024 VetCare Clinical. Excelência em Medicina Veterinária.
-                </p>
-            </div>
-            
-            <div class="d-flex gap-4">
-                <a href="#" class="text-vc-muted text-decoration-none small fw-bold">Sobre Nós</a>
-                <a href="#" class="text-vc-muted text-decoration-none small fw-bold">Serviços</a>
-                <a href="#" class="text-vc-muted text-decoration-none small fw-bold">Privacidade</a>
-                <a href="#" class="text-vc-muted text-decoration-none small fw-bold">Contato</a>
-            </div>
-            
+      <div
+        class="container-xl py-4 py-md-5 d-flex flex-column flex-md-row justify-content-between align-items-center gap-3"
+      >
+        <div class="d-flex flex-column align-items-center align-items-md-start">
+          <div class="fs-5 fw-bold text-primary mb-1">VetCare Clinical</div>
+          <p class="small text-vc-muted mb-0 text-center text-md-start">
+            © 2024 VetCare Clinical. Excelência em Medicina Veterinária.
+          </p>
         </div>
+
+        <div class="d-flex gap-4">
+          <a href="#" class="text-vc-muted text-decoration-none small fw-bold"
+            >Sobre Nós</a
+          >
+          <a href="#" class="text-vc-muted text-decoration-none small fw-bold"
+            >Serviços</a
+          >
+          <a href="#" class="text-vc-muted text-decoration-none small fw-bold"
+            >Privacidade</a
+          >
+          <a href="#" class="text-vc-muted text-decoration-none small fw-bold"
+            >Contato</a
+          >
+        </div>
+      </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <script>
-        // Esse código pega todas as caixas de texto (inputs) da página.
-        const inputs = document.querySelectorAll('input');
-        
-        inputs.forEach(input => {
-            // Quando a pessoa clica pra digitar em um campo...
-            input.addEventListener('focus', () => {
-                // A caixa "cresce" um pouquinho (scale 1.01) de forma suave. Dá uma sensação de 3D.
-                input.parentElement.style.transform = 'scale(1.01)';
-                input.parentElement.style.transition = 'transform 0.2s ease';
-            });
-            // Quando a pessoa clica fora do campo...
-            input.addEventListener('blur', () => {
-                // A caixa volta pro tamanho original (scale 1).
-                input.parentElement.style.transform = 'scale(1)';
-            });
+      // Esse código pega todas as caixas de texto (inputs) da página.
+      const inputs = document.querySelectorAll("input");
+
+      inputs.forEach((input) => {
+        // Quando a pessoa clica pra digitar em um campo...
+        input.addEventListener("focus", () => {
+          // A caixa "cresce" um pouquinho (scale 1.01) de forma suave. Dá uma sensação de 3D.
+          input.parentElement.style.transform = "scale(1.01)";
+          input.parentElement.style.transition = "transform 0.2s ease";
         });
+        // Quando a pessoa clica fora do campo...
+        input.addEventListener("blur", () => {
+          // A caixa volta pro tamanho original (scale 1).
+          input.parentElement.style.transform = "scale(1)";
+        });
+      });
     </script>
-</body>
+  </body>
 </html>
