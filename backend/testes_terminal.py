@@ -1,11 +1,12 @@
-from main import cadastrar_tutor, login_tutor, cadastrar_pet
+from main import cadastrar_tutor, login_tutor, cadastrar_pet, visualizar_tutor
 
 print("--- SIMULADOR DO FRONT END // CADASTRO ---")
 while True:
     print("\nO que você gostaria de testar?")
-    print("[1] Cadastro do Tutor")
+    print("[1] Cadastro do Tutor (Create)")
     print("[2] Login do Tutor")
     print("[3] Cadastro do Pet")
+    print("[4] Visualizar Ficha do Tutor (Read)")
     print("[0] Sair")
     escolha = input ("Escolha uma opção: ")
 
@@ -45,6 +46,13 @@ while True:
             castrado_input = input("O pet é castrado? (S/N): ")
 
         resposta = cadastrar_pet(e_tutor, nome_pet, esp, raca_pet, peso_pet, is_castrado, sexo_pet, obs_pet)
+        print(resposta)
+    
+    elif escolha == "4":
+        print("\n--- CONSULTA DA FICHA ---")
+        e = input("Digite o e-mail do tutor que deseja consultar: ")
+        
+        resposta = visualizar_tutor(e)
         print(resposta)
     
     elif escolha == "0":

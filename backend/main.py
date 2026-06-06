@@ -136,3 +136,39 @@ def cadastrar_pet(email_tutor, nome_pet, especie, raca, peso, castrado, sexo, ob
     )
 
     return f"Sucesso! O pet {nome_pet} (ID: {id_unico_pet}) foi adicionado à ficha de {tutor['nome']}"
+
+def visualizar_tutor(email):
+    db = conectar_banco()
+    if db is None:
+        return f"Erro de conexão com o banco."
+    
+    col = db.get_collection("clientes")
+    tutor = col.find_one({"email": email})
+
+    if not tutor:
+        return f"Erro: tutor não encontrado no sistema."
+    
+    #Ficha do cliente
+    ficha = f"\n========================================="
+    ficha += f"\n   FICHA DO CLIENTE: {tutor['nome'].upper()}"
+    ficha += f"\n========================================="
+    ficha += f"\nCPF: {tutor['cpf']}"
+    ficha += f"\nTelefone: {tutor['telefone']}"
+    ficha += f"\nE-mail: {tutor['email']}"
+    ficha += f"\n-----------------------------------------"
+    ficha += f"\nPETS CADASTRADOS:"
+
+    #Lista se o tutor não ter pets
+    if not tutor.get("pets") or len(tutor["pets"]) == 0:
+        ficha += "\n[ Nenhum pet cadastrado para este tutor.]"
+
+    else:
+        for pet in tutor["pets"]:
+            ficha += f"\n\n🐾 ID: {pet['id_pet']}"
+            ficha += f"\n   Nome: {pet['nome']} | Espécie: {pet['especie']} ({pet['raca']})"
+            ficha += f"\n   Peso: {pet['peso']} Kg | Castrado: {'Sim' if pet['castrado'] else 'Não'} | Sexo: {pet['sexo']}"
+            if pet['observacoes']:
+                ficha += f"\n Obs. Médicas: {pet['observacoes']}"
+    
+    ficha += f"\n========================================="
+    return ficha
