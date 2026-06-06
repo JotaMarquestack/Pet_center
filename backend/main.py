@@ -172,3 +172,132 @@ def visualizar_tutor(email):
     
     ficha += f"\n========================================="
     return ficha
+
+def atualizar_pet(id_pet, novo_peso, novo_castrado, novas_observacoes):
+    db = conectar_banco()
+    if db is None:
+        return f"Erro de conexão com o banco."
+    
+    col = db.get_collection("clientes")
+
+    tutor = col.find_one({"pets.id_pet": id_pet})
+    if not tutor:
+        return f"Erro: Nenhum pet com o ID {id_pet} foi encontrado no sistema."
+    
+    try:
+        peso_texto = str(novo_peso).replace(",", ".")
+        peso_seguro = float(peso_texto)
+    except ValueError:
+        return "Erro de Validação: O peso deve ser um número válido (ex: 12.5)."
+    
+    if not isinstance(novo_castrado, bool):
+        return "Erro de Validação: O status de castração deve ser Verdadeiro ou Falso."
+    
+    col.update_one(
+        {"pets.id_pet": id_pet},
+        {
+            "$set": {
+                "pets.$.peso": peso_seguro,
+                "pets.$.castrado": novo_castrado,
+                "pets.$.observacoes": novas_observacoes
+            }
+        }
+    )
+
+    return f"Sucesso! Os dados do pet {id_pet} foram atualizados no prontuário."
+
+def redefinir_senha_tutor(email, nova_senha):
+    db = conectar_banco()
+    if db is None:
+        return "Erro de conexão com o banco."
+    
+    col = db.get_collection("clientes")
+    tutor = col.find_one({"email": email})
+    if not tutor:
+        return "Erro: Tutor não encontrado no sistema."
+
+    if len(nova_senha) < 8 or not any(letra.isupper() for letra in nova_senha) or not any(letra.isdigit() for letra in nova_senha):
+        return "Erro: A nova senha deve ter no mínimo 8 caracteres, contendo pelo menos uma letra maiúscula e um número."
+    
+    senha_bytes = nova_senha.encode('utf-8')
+    nova_senha_criptografada = bcrypt.hashpw(senha_bytes, bcrypt.gensalt())
+
+
+    col.update_one(
+        {"email": email},
+        {
+            "$set": {
+                "senha":  nova_senha_criptografada,
+            }
+        }
+    )
+    return f"Sucesso! A senha para o e-mail {email} foi atualizada com segurança."
+
+def atualizar_perfil_tutor(email, novo_telefone, novo_nome):
+    db = conectar_banco()
+    if db is None:
+        return "Erro de conexão com o banco."
+    
+    col = db.get_collection("clientes")
+    tutor = col.find_one({"email": email})
+
+    if not tutor:  
+        return "Erro: Tutor não encontrado no sistema."
+      
+    erros = []
+
+    novo_telefone_limpo = novo_telefone.replace(" ", "").replace("-","").replace("(","").replace(")","")
+    if not novo_telefone_limpo.isdigit() or len(novo_telefone_limpo) not in [10, 11]:
+        erros.append("O telefone deve conter 10 ou 11 números (incluindo o DDD).")
+    
+    if any(letra.isdigit() for letra in novo_nome):
+        erros.append("O nome não pode conter números.")
+    
+    if len(erros) > 0:
+        mensagem_final = "A atualização falhou:\n- " + "\n- ".join(erros)
+        return mensagem_final
+    
+    col.update_one(
+        {"email": email},
+        {
+            "$set": {
+                "telefone": novo_telefone_limpo,
+                "nome": novo_nome
+            }
+        }
+    )
+    return f"Sucesso! O nome e o telefone de {tutor['nome']} foi atualizada com segurança."
+
+def remover_pet(id_pet):
+    db = conectar_banco()
+    if db is None:
+        return "Erro de conexão com o banco."
+
+    col = db.get_collection("clientes")
+    tutor = col.find_one({"pets": id_pet})
+    if not tutor:
+        return f"Erro: Nenhum pet com o ID {id_pet} foi encontrado."
+
+    col.update_one(
+        {"pets.id_pet": id_pet},
+        {
+            "$pull": {
+                "pets": {"id_pet": id_pet}
+            }
+        }
+    )
+    return f"Sucesso! O pet com ID {id_pet} foi removido do prontuário."
+
+def deletar_tutor_completo(email):
+    db = conectar_banco()
+    if db is None:
+        return "Erro de conexão com o banco."
+
+    col = db.get_collection("clientes")
+    tutor = col.find_one({"email":email})
+    if not tutor:
+        return f"Erro: Tutor não encontrado no sistema"
+    
+    col.delete_one({"email": email})
+    
+    return f"Aviso: O tutor {tutor['nome']} e todos os seus pets foram apagados para sempre."
