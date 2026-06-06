@@ -40,6 +40,9 @@ while True:
 
         castrado_input = input("O pet é castrado? (S/N): ")
         is_castrado = castrado_input.upper() == "S"
+        while castrado_input not in ["S", "N"]:
+            print("Por favor, digite apenas 'S' ou 'N'.")
+            castrado_input = input("O pet é castrado? (S/N): ")
 
         resposta = cadastrar_pet(e_tutor, nome_pet, esp, raca_pet, peso_pet, is_castrado, sexo_pet, obs_pet)
         print(resposta)
