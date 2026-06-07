@@ -14,7 +14,3 @@ main {
     background-color: /*#00745e card*/#dbdfde;
 }
 
-/* O z-index do Header */
-.main-header {
-    z-index: 10; /* Garante que o menu fique sempre "na frente" do fundo se eles se sobrepuserem */
-}
