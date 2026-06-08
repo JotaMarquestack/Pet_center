@@ -32,7 +32,7 @@ main {
     background-color: rgba(255, 255, 255, 0.2); /* Deixa o fundo levemente claro ao ativar */
 }
 
-p {
+span {
     color: #ffffff; /* Cor do texto */
     font-size: 0.75em; /* Tamanho da fonte */
     font-weight: bold; /* Peso da fonte */
