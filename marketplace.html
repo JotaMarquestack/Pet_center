@@ -37,8 +37,8 @@
                         <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Imagem de um cachorro" class="card-img-top" style="max-width: 100%;">
                         <div class="card-body">
                             <h5 class="card-title">Item 1</h5>
-                            <p class="card-text">R$100,00</p>
-                            <a href="#" class="btn btn-success btn-sm">Adicionar ao Carrinho</a>
+                            <span class="card-text">R$100,00</span>
+                            <button class="btn btn-success btn-sm">Adicionar ao Carrinho</button>
                         </div>
                     </div> <!--FIM DO CARD 1-->
                 </div>
@@ -47,8 +47,8 @@
                             <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Imagem de um cachorro" class="card-img-top" style="max-width: 100%;">
                             <div class="card-body">
                                 <h5 class="card-title">Item 2</h5>
-                                <p class="card-text">R$100,00</p>
-                                <a href="#" class="btn btn-success btn-sm">Adicionar ao Carrinho</a>
+                                <span class="card-text">R$100,00</span>
+                                <button class="btn btn-success btn-sm">Adicionar ao Carrinho</button>
                             </div>
                         </div> <!--FIM DO CARD 2-->
                     </div>
@@ -57,8 +57,8 @@
                             <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Imagem de um cachorro" class="card-img-top" style="max-width: 100%;">
                             <div class="card-body">
                                 <h5 class="card-title">Item 3</h5>
-                                <p class="card-text">R$100,00</p>
-                                <a href="#" class="btn btn-success btn-sm">Adicionar ao Carrinho</a>
+                                <span class="card-text">R$100,00</span>
+                                <button class="btn btn-success btn-sm">Adicionar ao Carrinho</button>
                             </div>
                         </div> <!--FIM DO CARD 3-->
                     </div>
@@ -71,8 +71,8 @@
                         <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Imagem de um cachorro" class="card-img-top" style="max-width: 100%;">
                         <div class="card-body">
                             <h5 class="card-title">Item 1</h5>
-                            <p class="card-text">R$100,00</p>
-                            <a href="#" class="btn btn-success btn-sm">Adicionar ao Carrinho</a>
+                            <span class="card-text">R$100,00</span>
+                            <button class="btn btn-success btn-sm">Adicionar ao Carrinho</button>
                         </div>
                     </div> <!--FIM DO CARD 1-->
                 </div>
@@ -81,8 +81,8 @@
                             <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Imagem de um cachorro" class="card-img-top" style="max-width: 100%;">
                             <div class="card-body">
                                 <h5 class="card-title">Item 2</h5>
-                                <p class="card-text">R$100,00</p>
-                                <a href="#" class="btn btn-success btn-sm">Adicionar ao Carrinho</a>
+                                <span class="card-text">R$100,00</span>
+                                <button class="btn btn-success btn-sm">Adicionar ao Carrinho</button>
                             </div>
                         </div> <!--FIM DO CARD 2-->
                     </div>
@@ -91,8 +91,8 @@
                             <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Imagem de um cachorro" class="card-img-top" style="max-width: 100%;">
                             <div class="card-body">
                                 <h5 class="card-title">Item 3</h5>
-                                <p class="card-text">R$100,00</p>
-                                <a href="#" class="btn btn-success btn-sm">Adicionar ao Carrinho</a>
+                                <span class="card-text">R$100,00</span>
+                                <button class="btn btn-success btn-sm">Adicionar ao Carrinho</button>
                             </div>
                         </div> <!--FIM DO CARD 3-->
                     </div>
@@ -104,19 +104,211 @@
                 <h1 class="text-success p-4 fw-bold">Salão de Beleza</h1>
             </div>
         </div>
-        <div class="row align-items-center justify-content-center">
-            <div class="col-6 p-2" style="background-color: #197765"><!--Nessa Linha terá uma área de seleção de "serviço" que será realizado onde o cliente poderá escolher clicando em quadrados que representam o que será feito, podendo escolher um ou mais e adicionando valor (ou opção "Tenho plano" e do outro lado uma api de calendario)-->
-                <div class="col-4">
-                    <button type="button" class="btn d-inline-flex focus-ring focus-ring-light btn-lg py-1 px-2" data-bs-toggle="button">🚿</button>
-                </div>  
-                <div class="col-4"></div>
-                <div class="col-4"></div>
+        <div class="row"><!--Linha 3-->
+            <div class="col-6 d-flex align-items-center" style="background-color: #197765; height: 50vh;  min-height: 80px;"><!--Nessa Linha terá uma área de seleção de "serviço" que será realizado onde o cliente poderá escolher clicando em quadrados que representam o que será feito, podendo escolher um ou mais e adicionando valor (ou opção "Tenho plano" e do outro lado uma api de calendario)-->
+                <div class="col-12 d-flex justify-content-center flex-wrap">
+                    <div class="col-3 d-flex flex-wrap">
+                        <div class="col-12 d-flex justify-content-center">
+                            <button type="button" class="btn btn btn-outline-light btn-icone" data-bs-toggle="button">
+                                <img src="../src/banho salao.png" class="btn-icone" alt="Banho">
+                            </button>
+                        </div>
+                        <div class="col-12 d-flex justify-content-center"><p>Banho</p></div>
+                    </div>
+                    <div class="col-3 d-flex justify-content-center flex-wrap">
+                        <div class="col-12 d-flex justify-content-center">
+                            <button type="button" class="btn btn btn-outline-light btn-icone" data-bs-toggle="button">
+                                <img src="../src/tosa salao.png" class="btn-icone" alt="Tosa">
+                            </button>
+                        </div>
+                        <div class="col-12 d-flex justify-content-center"><p>Tosa</p></div>
+                    </div>
+                    <div class="col-3 d-flex justify-content-center flex-wrap">
+                        <div class="col-12 d-flex justify-content-center">
+                            <button type="button" class="btn btn btn-outline-light btn-icone" data-bs-toggle="button">
+                                <img src="../src/unha salao.png" class="btn-icone" alt="Unha">
+                            </button>
+                        </div>
+                        <div class="col-12 d-flex justify-content-center"><p>Unhas</p></div>
+                    </div>
+                    <div class="col-3 d-flex justify-content-center flex-wrap">
+                        <div class="col-12 d-flex justify-content-center">
+                            <button type="button" class="btn btn btn-outline-light btn-icone" data-bs-toggle="button">
+                                <img src="../src/penteados salao.png" class="btn-icone" alt="penteado">
+                            </button>
+                        </div>
+                        <div class="col-12 d-flex justify-content-center"><p>Penteado</p></div>
+                    </div>
+                    <div class="col-12 d-flex justify-content-center mt-3 text-white">
+                        <div class="form-check fs-5">
+                            <input class="form-check-input" type="checkbox" id="checkboxPlano" style="cursor: pointer;">
+                            <label class="form-check-label ms-2" for="checkboxPlano" style="cursor: pointer;">
+                                Possui plano?
+                            </label>
+                        </div>
+                    </div>
+                </div> 
             </div>
             <div class="col-6">
-                
+                <div id="carouselExampleIndicators" class="carousel slide">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5l6kgl9TE3KMYwo3DM2WkRIxjgHN2LLQPZ9rkpMsYr9i2TEWHsZsyI-XtHI_CZiU35L1WPlnOhLkHoApz9UHpju75l04_bWNANmRYmwE7_fcthKIYlt2sLE7dSzKFnlmw6s7sM9vRECX6ga0jn_oPL470CQRdq8WKXKfeEtXmkFZpzB5TI1ISo5QAz8feU0s4iWhF5cHgcwC_QnruphRhIpT2ksSVqXvBoWbQc_6od51MjYckT_JXhgxZmkwsAGGBXGcmB30UIHY" class="d-block" style="width: 100%; max-height: 50vh;" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJKLcGiGm6KQMsV304BrzBE4_YtGtE7Wl6h8ASmDAm51o5e_DiO1Zb1MLsZnS6QmSUcnfci8OiesrlOekJ-JebVhIum2EL5zDmNp8tUcUhiGsDrEQ4PKL6jxzw-uZtqpEXi6ZLA1_AX2TgQ8AwxIdVk3xg_VaoH2BRp7U7PtK04vxnkYIwg2P4arHO4jolf-WOyC8bg6hR6_NYMVyM0pUW5f9W9lI-rke_qDBke7RPJyO12U1fOZZyOu8wcN9ojdSGu-XccI8tV04" class="d-block" style="width: 100%; max-height: 50vh;" alt="...">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
             </div>
         </div>
     </section>
+    <section class="container-fluid mt-5 mb-5" id="sessao-carrinho">
+        <div class="row justify-content-center">
+            
+            <div class="col-12 col-md-10 col-lg-8 shadow-lg rounded d-flex flex-wrap align-items-center" style="background-color: #197765; min-height: 400px; overflow: hidden;">
+                
+                <div class="col-12 col-md-6 d-flex justify-content-center align-items-center p-3" style="height: 400px;">
+                    <div style="height: 70%; width: 90%; display: flex; align-items: center; justify-content: center; border: 2px rgba(255, 255, 255, 0.4); border-radius: 15px; background-color: rgba(255, 255, 255, 0.05);">
+                        
+                        <img src="../src/carrinho.png" style="max-height: 100%; max-width: 100%;" alt="Imagem do Carrinho">
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 p-5 text-white">
+                    <h3 class="text-center fw-bold mb-4">Resumo do Pedido</h3>
+                    
+                    <hr style="border-color: rgba(255, 255, 255, 0.5); margin-bottom: 25px;">
+                    
+                    <div class="d-flex justify-content-between align-items-center mb-4 fs-4">
+                        <span>Total a pagar:</span>
+                        <strong id="valor-total" style="color: #66ff66; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">R$ 0,00</strong>
+                    </div>
+                    
+                    <button id="btn-finalizar" class="btn w-100 fw-bold fs-5 mt-2" style="background-color: white; color: #197765; border-radius: 8px; padding: 12px; border: 2px solid white; transition: 0.3s;">
+                        Finalizar Pedido
+                    </button>
+                </div>
+
+            </div>
+            
+        </div>
+    </section>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    let totalProdutos = 0;
+    const valorTotalEl = document.getElementById('valor-total');
+    const checkboxPlano = document.getElementById('checkboxPlano');
+    const btnFinalizar = document.getElementById('btn-finalizar');
+
+    // 1. Defina aqui os valores dos serviços do salão
+    const precosSalao = {
+        'Banho': 50.00,
+        'Tosa': 70.00,
+        'Unha': 30.00,      // Correspondente ao alt="Unha"
+        'penteado': 40.00   // Correspondente ao alt="penteado"
+    };
+
+    // Função para converter "R$100,00" para número (100.00)
+    function extrairValor(texto) {
+        return parseFloat(texto.replace('R$', '').replace(/\./g, '').replace(',', '.').trim());
+    }
+
+    // Função para formatar número para "R$ 0,00"
+    function formatarValor(valor) {
+        return 'R$ ' + valor.toFixed(2).replace('.', ',');
+    }
+
+    // Função que calcula e atualiza o total na tela
+    function calcularTotal() {
+        let totalSalao = 0;
+        
+        // Se a checkbox do plano NÃO estiver marcada, cobra os serviços
+        if (!checkboxPlano.checked) {
+            const botoesSalao = document.querySelectorAll('.btn-icone[data-bs-toggle="button"]');
+            botoesSalao.forEach(btn => {
+                if (btn.classList.contains('active')) {
+                    const nomeServico = btn.querySelector('img').alt;
+                    if (precosSalao[nomeServico]) {
+                        totalSalao += precosSalao[nomeServico];
+                    }
+                }
+            });
+        }
+
+        const totalFinal = totalProdutos + totalSalao;
+        valorTotalEl.innerText = formatarValor(totalFinal);
+        return totalFinal;
+    }
+
+    // 2. Adicionar evento de clique nos produtos
+    // Seleciona todos os botões de "Adicionar ao Carrinho"
+    const botoesProduto = document.querySelectorAll('.card-body .btn-success');
+    botoesProduto.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Navega até o elemento "span" irmão que contém o preço
+            const textoPreco = this.parentElement.querySelector('span').innerText;
+            const valorItem = extrairValor(textoPreco);
+            
+            totalProdutos += valorItem;
+            calcularTotal();
+
+            // Animação de feedback no botão
+            const textoOriginal = this.innerText;
+            this.innerText = "Adicionado!";
+            this.classList.replace('btn-success', 'btn-secondary');
+            setTimeout(() => {
+                this.innerText = textoOriginal;
+                this.classList.replace('btn-secondary', 'btn-success');
+            }, 1000);
+        });
+    });
+
+    // 3. Adicionar evento de clique nos serviços do salão
+    const botoesSalao = document.querySelectorAll('.btn-icone[data-bs-toggle="button"]');
+    botoesSalao.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // O setTimeout garante que o Bootstrap adicione/remova a classe 'active' antes de calcularmos
+            setTimeout(calcularTotal, 50);
+        });
+    });
+
+    // 4. Adicionar evento na checkbox do plano
+    checkboxPlano.addEventListener('change', calcularTotal);
+
+    // 5. Botão Finalizar via WhatsApp
+    btnFinalizar.addEventListener('click', function() {
+        const total = calcularTotal();
+        
+        if (total === 0) {
+            alert("Seu carrinho está vazio. Adicione itens antes de finalizar.");
+            return;
+        }
+
+        // Coloque o número do WhatsApp da loja aqui (apenas números, com código do país e DDD)
+        const numeroWhatsApp = "5511999999999"; 
+        
+        const textoMsg = `Olá, VetCare! Gostaria de finalizar meu pedido. O valor total do meu carrinho foi de ${formatarValor(total)}.`;
+        const link = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(textoMsg)}`;
+        
+        // Abre o WhatsApp em uma nova aba
+        window.open(link, '_blank');
+    });
+});
+</script>
 </body>
 
 <footer class="border-top border-4 bg-secondary">
@@ -145,7 +337,7 @@
                 </div>
             </div>
             <div class="col-4">
-                <p>&copy; 2024 VetCare. Todos os direitos reservados.</p>
+                <span>&copy; 2024 VetCare. Todos os direitos reservados.</span>
             </div>
     </section>
 </footer>
