@@ -1,17 +1,17 @@
 /* Configuração geral do cabeçalho */
 header {
-  background-color: #006653; /* Cor de fundo (que você alterou para o verde depois) */
+  background-color: #006653; /* Cor de fundo */
   width: 100%; /* Força o menu a ocupar a largura inteira da tela */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02); /* Aquela sombra bem leve abaixo do menu */
 }
 
 /* O z-index do Header */
 .main-header {
-  z-index: 10; /* Garante que o menu fique sempre "na frente" do fundo se eles se sobrepuserem */
+  z-index: 10; /* Garante que o menu fique sempre na frente do fundo se eles se sobrepuserem */
 }
 /* Guardamos as cores e as fontes do projeto em "caixinhas" com nomes para facilitar o uso */
 :root {
-  --bs-primary: #00685f; /* Verde escuro principal da clínica */
+  --bs-primary: #00685f; /* Verde escuro princpial da clínica */
   --bs-primary-rgb: 0, 104, 95;
   --bs-body-bg: #f8f9ff; /* Cor de fundo clarinha da página toda */
   --bs-body-color: #0b1c30; /* Cor do texto escuro padrão */
@@ -64,7 +64,7 @@ label,
   border-color: #005049 !important;
 }
 
-/* Regras para deixar as caixas onde a pessoa digita (inputs) mais bonitas */
+/* Regras para deixar o imput mais bonito */
 .form-control {
   border-color: var(--vc-outline-variant);
   padding: 0.75rem 1rem;
@@ -95,14 +95,14 @@ label,
   background-color: var(--vc-surface);
   height: 80px;
 }
-/* Efeito de "vidro fosco" transparente, usado na caixinha de avaliação (avaliação das estrelas) */
+/* Efeito de "vidro fosco" transparente, usado na caixinha de avaliação/feedback */
 .glass-card {
   background-color: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
-/* Cor para textos mais discretos (ex: "Já tem uma conta?") */
+/* Cor para textos mais discretos  */
 .text-vc-muted {
   color: var(--vc-text-muted);
 }
