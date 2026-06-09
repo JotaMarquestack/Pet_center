@@ -1,5 +1,5 @@
 from flask import Flask, request
-from main import agendar_consulta
+from agendamento import agendar_consulta
 
 app = Flask(__name__)
 
