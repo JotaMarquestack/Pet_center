@@ -6,7 +6,7 @@ app = Flask(__name__,
             static_folder='../frontend',
             static_url_path='')
 
-app.secret_key = 'vet_care_projeto_faculdade2026'
+app.secret_key = 'vet_care_projeto_faculdade2026' #Isso aqui tecnicamente precisaria entrar no .env, não pode ir pra público, mas como é só pro projeto, por enquanto não tem BO
 
 
 
