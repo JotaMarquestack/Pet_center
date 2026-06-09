@@ -1,0 +1,42 @@
+
+/* Configuração geral do cabeçalho */
+header {
+    background-color: #006653; /* Cor de fundo (que você alterou para o verde depois) */
+    width: 100%;               /* Força o menu a ocupar a largura inteira da tela */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02); /* Aquela sombra bem leve abaixo do menu */
+}  
+
+/* O z-index do Header */
+.main-header {
+    z-index: 10; /* Garante que o menu fique sempre "na frente" do fundo se eles se sobrepuserem */
+}
+
+/* ==========================================================================
+   ESTILOS COMPLEMENTARES PARA A PÁGINA HOME
+   ========================================================================== */
+
+/* Garante que o efeito de transição dos cards de serviço seja suave */
+#servicos .group {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Força os ícones do Google a se comportarem como blocos alinhados */
+.material-symbols-outlined {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+}
+
+/* Ajuste fino para imagens de fundo responsivas dentro do ecossistema Tailwind */
+.bg-cover {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Suaviza a rolagem da página quando o usuário clicar em "Conhecer Serviços" */
+html {
+    scroll-behavior: smooth;
+}
