@@ -1,10 +1,12 @@
-from main import cadastrar_tutor, login_tutor, cadastrar_pet
+from login_cadastro import cadastrar_tutor, login_tutor, cadastrar_pet
+
 print("--- SIMULADOR DO FRONT END // CADASTRO ---")
 while True:
     print("\nO que você gostaria de testar?")
     print("[1] Cadastro do Tutor (Create)")
     print("[2] Login do Tutor")
     print("[3] Cadastro do Pet")
+    print("[0] Sair")
     escolha = input ("Escolha uma opção: ")
 
     if escolha == "1":

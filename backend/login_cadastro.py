@@ -31,18 +31,21 @@ def cadastrar_tutor(cpf, nome, telefone, email, senha):
         erros.append("O telefone deve conter 10 ou 11 números (incluindo o DDD).")
 
     #Definição para a senha mínima:
-    if len(senha) < 8 or not any(letra.isupper() for letra in senha) or not any(letra.isdigit for letra in senha):
+    if len(senha) < 8 or not any(letra.isupper() for letra in senha) or not any(letra.isdigit() for letra in senha):
         erros.append("A senha deve ter no mínimo 8 caracteres, contendo pelo menos uma letra maiúscula e um número.")
     
     if len(erros) > 0:
         mensagem_final = "O cadastro falhou pelos seguintes motivos:\n " + " \n ".join(erros)
-        return(mensagem_final)
+        print(f"ERRO DE VALIDAÇÃO: {mensagem_final}")
+        return False 
     
     #Pesquisa para verificar se o Email ou o CPF já estão cadastrados no sistema.
     if col.find_one({"email": email}):
-        return f"Erro: O email {email} já está cadastrado!"
+        print(f"ERRO: E-mail {email} já cadastrado!")
+        return False
     if col.find_one({"cpf": cpf_limpo}):
-        return f"Erro: O cpf {cpf_limpo} já consta no sistema!"
+        print(f"ERRO: CPF {cpf_limpo} já cadastrado!")
+        return False
     
     #Geração da senha criptografada
     senha_bytes = senha.encode('utf-8')
@@ -58,28 +61,35 @@ def cadastrar_tutor(cpf, nome, telefone, email, senha):
     }
 
     col.insert_one(novo_cliente)
-    return f"Sucesso! Sua conta foi criada para {email}."
+    return True
     
 def login_tutor(email, senha_digitada):
     db = conectar_banco()
     if db is None:
-        return "Erro de conexão com o banco."
+        return False
     
     col = db.get_collection("clientes")
-    cliente = col.find_one({"email": email})
+    
+    # Limpa espaços invisíveis que possam vir do HTML
+    email_limpo = email.strip() 
+    
+    cliente = col.find_one({"email": email_limpo})
 
-    #Checagem se o email foi encontrado:
     if cliente:
-        #Transformar senha em bytes
+        print(f"BINGO! Encontrei o cliente: {cliente['nome']} no banco!")
+        
         senha_digitada_bytes = senha_digitada.encode('utf-8')
-
-        #Bycrypt pega a senha em bytes e compara com a senha no banco de dados
+        
+        # Tenta bater a senha
         if bcrypt.checkpw(senha_digitada_bytes, cliente["senha"]):
-            return f"Login aprovado! Acesso liberado para {cliente['nome']}"
+            print("SUCESSO: A criptografia da senha bateu!")
+            return True
         else:
-            return f"Erro: Email ou senha incorretos."
+            print("BLOQUEADO: O email existe, mas a senha digitada está errada.")
+            return False
     else:
-        return f"Erro: Email ou senha incorretos."
+        print(f"BLOQUEADO: O MongoDB jurou que não achou o email '{email_limpo}'")
+        return False
 
 def cadastrar_pet(email_tutor, nome_pet, especie, raca, peso, castrado, sexo, observacoes):
     db = conectar_banco()

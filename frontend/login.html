@@ -104,7 +104,7 @@
                 </p>
               </div>
 
-              <form onsubmit="return false;">
+              <form action="/processar_login" method="POST">
                 <div class="mb-3 input-wrapper">
                   <label
                     class="form-label text-vc-muted text-uppercase fw-bold vc-label"
@@ -113,8 +113,10 @@
                   >
                   <input
                     type="email"
+                    name="email"
                     class="form-control rounded-3"
                     placeholder="seu@email.com"
+                    required
                   />
                 </div>
 
@@ -127,8 +129,10 @@
                   <div class="position-relative">
                     <input
                       type="password"
+                      name="senha"
                       class="form-control rounded-3 pe-5"
                       placeholder="••••••••"
+                      required
                     />
                     <button
                       class="btn btn-link text-secondary position-absolute top-50 end-0 translate-middle-y text-decoration-none shadow-none"
@@ -148,6 +152,7 @@
                     <input
                       class="form-check-input shadow-none mt-1"
                       type="checkbox"
+                      name="lembrar"
                       id="rememberMe"
                     />
                     <label
