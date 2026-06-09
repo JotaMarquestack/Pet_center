@@ -39,6 +39,12 @@
                             <h5 class="card-title">Coleira Peitoral X Stillo</h5>
                             <p class="card-text">R$36,00</p>
                             <button class="btn btn-success btn-sm">Adicionar ao Carrinho</button>
+                            <div class="d-flex align-items-center mt-2">
+                                <span class="text-dark me-2" style="font-size: 0.85rem; font-weight: 600;">Quantidade: </span><span class="qtd-item ms-1 text-dark p-2">0</span>
+                                <button class="btn btn-success btn-sm" style="border-radius: 4px;">
+                                    <p style="color: #ff3333; font-weight: bold; font-size: 2rem; line-height: 0;">-</p>
+                                </button>
+                            </div>
                         </div>
                     </div> <!--FIM DO CARD 1-->
                 </div>
@@ -49,6 +55,12 @@
                                 <h5 class="card-title">Osso de couro bovino</h5>
                                 <p class="card-text">R$36,90</p>
                                 <button class="btn btn-success btn-sm">Adicionar ao Carrinho</button>
+                                <div class="d-flex align-items-center mt-2">
+                                    <span class="text-dark me-2" style="font-size: 0.85rem; font-weight: 600;">Quantidade: </span><span class="qtd-item ms-1 text-dark p-2">0</span>
+                                    <button class="btn btn-success btn-sm" style="border-radius: 4px;">
+                                        <p style="color: #ff3333; font-weight: bold; font-size: 2rem; line-height: 0;">-</p>
+                                    </button>
+                                </div>
                             </div>
                         </div> <!--FIM DO CARD 2-->
                     </div>
@@ -59,6 +71,12 @@
                                 <h5 class="card-title">Bolinha de brinquedo</h5>
                                 <p class="card-text">Não disponível</p>
                                 <button class="btn btn-success btn-sm">Adicionar ao Carrinho</button>
+                                <div class="d-flex align-items-center mt-2">
+                                    <span class="text-dark me-2" style="font-size: 0.85rem; font-weight: 600;">Quantidade: </span><span class="qtd-item ms-1 text-dark p-2">0</span>
+                                    <button class="btn btn-success btn-sm" style="border-radius: 4px;">
+                                        <p style="color: #ff3333; font-weight: bold; font-size: 2rem; line-height: 0;">-</p>
+                                    </button>
+                                </div>
                             </div>
                         </div> <!--FIM DO CARD 3-->
                     </div>
@@ -73,6 +91,12 @@
                             <h5 class="card-title">Churu 24 unidades</h5>
                             <p class="card-text">R$139,62</p>
                             <button class="btn btn-success btn-sm">Adicionar ao Carrinho</button>
+                            <div class="d-flex align-items-center mt-2">
+                                <span class="text-dark me-2" style="font-size: 0.85rem; font-weight: 600;">Quantidade: </span><span class="qtd-item ms-1 text-dark p-2">0</span>
+                                <button class="btn btn-success btn-sm" style="border-radius: 4px;">
+                                    <p style="color: #ff3333; font-weight: bold; font-size: 2rem; line-height: 0;">-</p>
+                                </button>
+                            </div>
                         </div>
                     </div> <!--FIM DO CARD 1-->
                 </div>
@@ -83,6 +107,12 @@
                                 <h5 class="card-title">Caixa de areia premium</h5>
                                 <p class="card-text">R$217,00</p>
                                 <button class="btn btn-success btn-sm">Adicionar ao Carrinho</button>
+                                <div class="d-flex align-items-center mt-2">
+                                    <span class="text-dark me-2" style="font-size: 0.85rem; font-weight: 600;">Quantidade: </span><span class="qtd-item ms-1 text-dark p-2">0</span>
+                                    <button class="btn btn-success btn-sm" style="border-radius: 4px;">
+                                        <p style="color: #ff3333; font-weight: bold; font-size: 2rem; line-height: 0;">-</p>
+                                    </button>
+                                </div>
                             </div>
                         </div> <!--FIM DO CARD 2-->
                     </div>
@@ -93,6 +123,12 @@
                                 <h5 class="card-title">Arranhador com bolinha para gatos</h5>
                                 <p class="card-text">R$52,00</p>
                                 <button class="btn btn-success btn-sm">Adicionar ao Carrinho</button>
+                                <div class="d-flex align-items-center mt-2">
+                                    <span class="text-dark me-2" style="font-size: 0.85rem; font-weight: 600;">Quantidade: </span><span class="qtd-item ms-1 text-dark p-2">0</span>
+                                    <button class="btn btn-success btn-sm" style="border-radius: 4px;">
+                                        <p style="color: #ff3333; font-weight: bold; font-size: 2rem; line-height: 0;">-</p>
+                                    </button>
+                                </div>
                             </div>
                         </div> <!--FIM DO CARD 3-->
                     </div>
@@ -254,34 +290,75 @@ document.addEventListener('DOMContentLoaded', function() {
         return totalFinal;
     }
 
-    // 2. Adicionar evento de clique nos produtos
-    // Seleciona todos os botões de "Adicionar ao Carrinho"
-    const botoesProduto = document.querySelectorAll('.card-body .btn-success');
-    botoesProduto.forEach(btn => {
-        btn.addEventListener('click', function() {
-            // Navega até o elemento "p" irmão que contém o preço
-            const textoPreco = this.parentElement.querySelector('p').innerText;
-            const valorItem = extrairValor(textoPreco);
-            
-            totalProdutos += valorItem;
-            calcularTotal();
+    // 2. Adicionar evento de clique nos produtos e gerenciar quantidade
+    const cardsProduto = document.querySelectorAll('.card-body');
+    
+    cardsProduto.forEach(cardBody => {
+        const textoPreco = cardBody.querySelector('.card-text').innerText;
+        const spanQtd = cardBody.querySelector('.qtd-item');
+        
+        // Pega todos os botões verdes dentro deste card específico
+        const botoes = cardBody.querySelectorAll('button.btn-success');
+        
+        let btnAdicionar = null;
+        let btnSubtrair = null;
+        let quantidade = 0;
 
-            // Animação de feedback no botão
-            const textoOriginal = this.innerText;
-            this.innerText = "Adicionado!";
-            this.classList.replace('btn-success', 'btn-secondary');
-            setTimeout(() => {
-                this.innerText = textoOriginal;
-                this.classList.replace('btn-secondary', 'btn-success');
-            }, 1000);
+        // Identifica os botões pelo texto para não conflitar com as classes do HTML
+        botoes.forEach(btn => {
+            if (btn.innerText.includes('Adicionar')) {
+                btnAdicionar = btn;
+            } else if (btn.innerText.includes('-')) {
+                btnSubtrair = btn;
+            }
         });
+
+        // Lógica do botão de Adicionar
+        if (btnAdicionar) {
+            btnAdicionar.addEventListener('click', function() {
+                const valorItem = extrairValor(textoPreco);
+                
+                if (!isNaN(valorItem)) {
+                    quantidade++;
+                    if (spanQtd) spanQtd.innerText = quantidade;
+                    
+                    totalProdutos += valorItem;
+                    calcularTotal();
+
+                    // Animação de feedback
+                    const textoOriginal = this.innerText;
+                    this.innerText = "Adicionado!";
+                    this.classList.replace('btn-success', 'btn-secondary');
+                    setTimeout(() => {
+                        this.innerText = textoOriginal;
+                        this.classList.replace('btn-secondary', 'btn-success');
+                    }, 1000);
+                } else {
+                    alert("Este produto não está disponível no momento.");
+                }
+            });
+        }
+
+        // Lógica do botão de Subtrair
+        if (btnSubtrair) {
+            btnSubtrair.addEventListener('click', function() {
+                const valorItem = extrairValor(textoPreco);
+                
+                if (quantidade > 0 && !isNaN(valorItem)) {
+                    quantidade--;
+                    if (spanQtd) spanQtd.innerText = quantidade;
+                    
+                    totalProdutos -= valorItem;
+                    calcularTotal();
+                }
+            });
+        }
     });
 
     // 3. Adicionar evento de clique nos serviços do salão
     const botoesSalao = document.querySelectorAll('.btn-icone[data-bs-toggle="button"]');
     botoesSalao.forEach(btn => {
         btn.addEventListener('click', function() {
-            // O setTimeout garante que o Bootstrap adicione/remova a classe 'active' antes de calcularmos
             setTimeout(calcularTotal, 50);
         });
     });
@@ -298,13 +375,11 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // Coloque o número do WhatsApp da loja aqui (apenas números, com código do país e DDD)
         const numeroWhatsApp = "5581985041172"; 
         
         const textoMsg = `Olá, VetCare! Gostaria de finalizar meu pedido. O valor total do meu carrinho foi de ${formatarValor(total)}.`;
         const link = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(textoMsg)}`;
         
-        // Abre o WhatsApp em uma nova aba
         window.open(link, '_blank');
     });
 });
