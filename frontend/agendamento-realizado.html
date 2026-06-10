@@ -25,56 +25,13 @@
         </section>
     </header>
 
-    <main class="main-content">
+ <main class="main-content">
         <div class="booking-container">
             
-            <div class="booking-form-side">
-                <h2>Agendar um Horário</h2>
-                <p class="subtitle">Escolha o melhor momento para cuidar do seu pet.</p>
-
-                <form action="http://localhost:5000/agendar_pelo_site" method="POST">
-                    <input type="hidden" name="email_tutor" value="teste@gmail.com">                   
-                    <div class="form-group">
-                        <label for="pet_selecionado">Selecione o Pet</label>
-                        <select id="pet_selecionado" name="id_pet" required>
-                            <option value="" disabled selected>Escolha um pet...</option>
-                            <option value="PET-73A398">Rex (Golden Retriever)</option>
-                            <option value="PET-001ECD">Tibaute (Siamês)</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="servico">Serviço Desejado</label>
-                        <select id="servico" name="servico" required>
-                            <option value="" disabled selected>Selecione o serviço...</option>
-                            <option value="Banho e Tosa">Banho e Tosa Completa</option>
-                            <option value="Apenas Banho">Apenas Banho</option>
-                            <option value="Consulta Veterinária">Consulta Veterinária</option>
-                            <option value="Corte de Unhas">Corte de Unhas</option>
-                        </select>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="data">Data</label>
-                            <input type="date" id="data" name="data" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="hora">Horário</label>
-                            <input type="time" id="hora" name="hora" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="observacoes">Observações / Recomendações Especiais</label>
-                        <textarea id="observacoes" name="observacoes" placeholder="Ex: Tem medo de soprador, alergia a algum shampoo..."></textarea>
-                    </div>
-
-                    <button type="submit" class="btn-submit">Confirmar Agendamento</button>
-                </form>
-
-                <div class="back-link">
-                    <a href="#">← Voltar para o Painel</a>
+            <div class="booking-form-side text-center md:text-start">
+                <div class="mb-4">
+                    <h2 class="text-success">Agendamento realizado com sucesso!</h2>
+                    <p class="subtitle">O horário do seu pet foi reservado na nossa clínica.</p>
                 </div>
             </div>
 
