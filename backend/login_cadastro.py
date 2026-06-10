@@ -1,0 +1,148 @@
+import bcrypt #Criptografia da senha
+import uuid #Geração de ID 
+from database import conectar_banco #Conexão com o database.py
+
+def cadastrar_tutor(cpf, nome, telefone, email, senha):
+    db = conectar_banco()
+    if db is None:
+        return "Erro de conexão com o banco."
+    
+    col = db.get_collection("clientes")
+
+    #Lista para erros
+    erros = []
+
+    #Definição para o CPF barrado
+    cpf_limpo = cpf.replace(".", "").replace("-", "").strip()
+    if not cpf_limpo.isdigit() or len(cpf_limpo) != 11:
+        erros.append("O CPF deve conter exatamente 11 números")
+    
+    #Definição para o e-mail barrado:
+    if "@" not in email or "." not in email:
+        erros.append("Erro de validação: Formato de e-mail inválido.")
+
+    #Definição para o nome incorreto:
+    if any(letra.isdigit() for letra in nome):
+        erros.append("O nome não pode conter números.")
+    
+    #Definição para o número do celular:
+    telefone_limpo = telefone.replace(" ", "").replace("-","").replace("(","").replace(")","")
+    if not telefone_limpo.isdigit() or len(telefone_limpo) not in [10, 11]:
+        erros.append("O telefone deve conter 10 ou 11 números (incluindo o DDD).")
+
+    #Definição para a senha mínima:
+    if len(senha) < 8 or not any(letra.isupper() for letra in senha) or not any(letra.isdigit() for letra in senha):
+        erros.append("A senha deve ter no mínimo 8 caracteres, contendo pelo menos uma letra maiúscula e um número.")
+    
+    if len(erros) > 0:
+        mensagem_final = "O cadastro falhou pelos seguintes motivos:\n " + " \n ".join(erros)
+        print(f"ERRO DE VALIDAÇÃO: {mensagem_final}")
+        return False 
+    
+    #Pesquisa para verificar se o Email ou o CPF já estão cadastrados no sistema.
+    if col.find_one({"email": email}):
+        print(f"ERRO: E-mail {email} já cadastrado!")
+        return False
+    if col.find_one({"cpf": cpf_limpo}):
+        print(f"ERRO: CPF {cpf_limpo} já cadastrado!")
+        return False
+    
+    #Geração da senha criptografada
+    senha_bytes = senha.encode('utf-8')
+    senha_criptografada = bcrypt.hashpw(senha_bytes, bcrypt.gensalt())
+    
+    novo_cliente = {
+        "cpf": cpf_limpo,
+        "nome": nome,
+        "telefone": telefone_limpo,
+        "email": email,
+        "senha": senha_criptografada, 
+        "pets": []
+    }
+
+    col.insert_one(novo_cliente)
+    return True
+    
+def login_tutor(email, senha_digitada):
+    db = conectar_banco()
+    if db is None:
+        return False
+    
+    col = db.get_collection("clientes")
+    
+    # Limpa espaços invisíveis que possam vir do HTML
+    email_limpo = email.strip() 
+    
+    cliente = col.find_one({"email": email_limpo})
+
+    if cliente:
+        print(f"BINGO! Encontrei o cliente: {cliente['nome']} no banco!")
+        
+        senha_digitada_bytes = senha_digitada.encode('utf-8')
+        
+        # Tenta bater a senha
+        if bcrypt.checkpw(senha_digitada_bytes, cliente["senha"]):
+            print("SUCESSO: A criptografia da senha bateu!")
+            return True
+        else:
+            print("BLOQUEADO: O email existe, mas a senha digitada está errada.")
+            return False
+    else:
+        print(f"BLOQUEADO: O MongoDB jurou que não achou o email '{email_limpo}'")
+        return False
+
+def cadastrar_pet(email_tutor, nome_pet, especie, raca, peso, castrado, sexo, observacoes):
+    db = conectar_banco()
+    if db is None:
+        return "Erro de conexão com o banco."
+    
+    col = db.get_collection("clientes")
+    tutor = col.find_one({"email":email_tutor})
+
+    #Barreira de validação do pet
+    erros_pet = []
+
+    #Validação do sexo
+    sexo_limpo = str(sexo).strip().upper()
+    if sexo_limpo not in ["M", "F"]:
+        erros_pet.append("O sexo do pet deve ser exclusivamente 'M' ou 'F'.")
+    
+    #Validação do castrado
+    if not isinstance(castrado, bool):
+        erros_pet.append("O status de castração deve ser um valor verdadeiro ou falso")
+
+    #Validação do usuário    
+    if not tutor:
+        return f"Erro, tutor não encontrado. Não é possível cadastrar o pet"
+    
+    #Validação do peso
+    try:
+        peso_texto = str(peso).replace(",",".")
+        peso_seguro = float(peso_texto)
+    except(ValueError):
+        erros_pet.append("Erro de validação: O peso deve ser um número válido (Ex: 5.5 ou 5,5).")
+    
+    if len(erros_pet)>0:
+        mensagem_final = "O cadastro do pet falhou pelos seguintes motivos:\n- " + "\n- ".join(erros_pet)
+        return mensagem_final
+    
+    #Gerador de ID único para o pet:
+    id_unico_pet = f"PET-{uuid.uuid4().hex[:6].upper()}"
+
+    novo_pet = {
+        "id_pet": id_unico_pet,
+        "nome": nome_pet,
+        "especie": especie,
+        "raca": raca,
+        "peso": peso_seguro,
+        "castrado": castrado,
+        "sexo": sexo_limpo,
+        "observacoes": observacoes
+    }
+
+    col.update_one(
+        {"email":email_tutor},
+        {"$push": {"pets": novo_pet}}
+    )
+
+    return f"Sucesso! O pet {nome_pet} (ID: {id_unico_pet}) foi adicionado à ficha de {tutor['nome']}"
