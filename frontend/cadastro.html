@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <title>Cadatro</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Hanken+Grotesk:wght@600;700&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style-cadastro.css" />
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+  <header>
+    <section class="container-fluid py-2">
+      <div class="row align-items-center">
+        <div class="col-12 col-md-2 d-flex justify-content-center">
+          <h3 class="fw-bold m-0" style="color: #ffffff">VetCare</h3>
+        </div>
+        <div class="col-12 col-sm-7 d-flex justify-content-sm-center justify-content-center gap-2 mb-2 mb-sm-0">
+          <a class="btn btn-outline-light btn-sm" href="index.html" role="button">Início</a>
+          <a class="btn btn-outline-light btn-sm" href="quem-somos.html" role="button">Sobre nós</a>
+          <a class="btn btn-outline-light btn-sm" href="#" role="button">Serviços</a>
+          <a class="btn btn-outline-light btn-sm" href="marketplace.html" role="button">Marketplace</a>
+        </div>
+        <div class="col-12 col-sm-3 d-flex justify-content-center justify-content-sm-end">
+          <a class="btn btn-outline-light btn-sm" href="login.html" role="button">Marcar Consulta</a>
+        </div>
+      </div>
+    </section>
+  </header>
+  <main class="flex-grow-1 d-flex align-items-center justify-content-center pt-5">
+    <div class="container-xl py-5">
+      <div class="card shadow-sm border border-light overflow-hidden rounded-4" style="min-height: 700px">
+        <div class="row g-0 h-100">
+          <div class="col-12 col-lg-6 p-4 p-md-5 d-flex flex-column justify-content-center">
+            <div class="mx-auto w-100" style="max-width: 450px">
+              <div class="mb-5">
+                <h1 class="fw-bold mb-2 fs-2" style="color: var(--bs-body-color)">
+                  Comece o cuidado hoje
+                </h1>
+                <p class="text-vc-muted">
+                  Crie sua conta na VetCare Clinical e tenha acesso completo
+                  aos serviços de saúde do seu pet.
+                </p>
+              </div>
+              <form action="/processar_cadastro" method="POST">
+                <div class="mb-3">
+                  <label for="nome" class="form-label text-vc-muted text-uppercase fw-bold"
+                    style="font-size: 0.85rem; letter-spacing: 0.05em">Nome Completo</label>
+                  <input type="text" name="nome" class="form-control rounded-3" id="nome" placeholder="Ex: João Silva"
+                    required />
+                </div>
+                <div class="mb-3">
+                  <label for="cpf" class="form-label text-vc-muted text-uppercase fw-bold"
+                    style="font-size: 0.85rem; letter-spacing: 0.05em">CPF</label>
+                  <input type="text" name="cpf" class="form-control rounded-3" id="cpf" placeholder="Ex: xxx.xxx.xxx-xx"
+                    required />
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label text-vc-muted text-uppercase fw-bold"
+                    style="font-size: 0.85rem; letter-spacing: 0.05em">E-mail</label>
+                  <input type="email" name="email" class="form-control rounded-3" id="email"
+                    placeholder="joao@exemplo.com" required />
+                </div>
+                <div class="row g-3 mb-3">
+                  <div class="col-md-6">
+                    <label for="phone" class="form-label text-vc-muted text-uppercase fw-bold"
+                      style="font-size: 0.85rem; letter-spacing: 0.05em">Telefone</label>
+                    <input type="tel" name="telefone" class="form-control rounded-3" id="phone"
+                      placeholder="(11) 99999-9999" required />
+                  </div>
+                  <div class="col-md-6">
+                    <label for="password" class="form-label text-vc-muted text-uppercase fw-bold"
+                      style="font-size: 0.85rem; letter-spacing: 0.05em">Senha</label>
+                    <input type="password" name="senha" class="form-control rounded-3" id="password"
+                      placeholder="••••••••" required />
+                  </div>
+                </div>
+                <div class="form-check mb-4 mt-3 d-flex align-items-start gap-2">
+                  <input class="form-check-input shadow-none mt-1" type="checkbox" id="terms" name="termos" required />
+                  <label class="form-check-label text-vc-muted" for="terms" style="font-size: 0.9rem">
+                    Eu concordo com os
+                    <a href="#" class="text-primary fw-bold text-decoration-none">Termos de Uso</a>
+                    e a
+                    <a href="#" class="text-primary fw-bold text-decoration-none">Política de Privacidade</a>
+                    da VetCare.
+                  </label>
+                </div>
+                <button type="submit" class="btn btn-primary w-100 py-3 rounded-3 fw-bold shadow-sm">
+                  Criar Conta
+                </button>
+              </form>
+              <div class="mt-5 text-center">
+                <p class="text-vc-muted">
+                  Já tem uma conta?
+                  <a href="login.html" class="text-primary fw-bold text-decoration-none">Faça login aqui</a>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-6 d-none d-lg-block position-relative bg-light">
+            <img
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0Nh6UBdCAzw58ygHCVECkCrGwEwOz7G1FUf0ygFNFS20zJNxOgc1WZyAu4nw7KzJQ1WAjJcFri1MQiGz9yXtNjBNF5PC-tllTvnVkGscRQocRAkpwLDUcIV5-tQbn3UPZs9Cekzj4jXjCdY-u60ZjtrcLD4bI_vNenqMVr7UiWI29sGHn82CdxHEDmbVeZQXHk862Oci4Mkd3Sy5qYEuFzrreuP4eer38D54Kir6gBDyCaR9ogN13f-eR1DSmBVxKJ9OjBJqIduQ"
+              alt="Veterinarian with dog" class="position-absolute w-100 h-100 object-fit-cover" />
+
+            <div class="position-absolute w-100 h-100" style="
+                  background: linear-gradient(
+                    to top,
+                    rgba(0, 104, 95, 0.4),
+                    transparent
+                  );
+                "></div>
+
+            <div class="position-absolute bottom-0 start-0 end-0 m-5 p-4 rounded-4 shadow-lg glass-card">
+              <div class="d-flex gap-1 mb-2">
+                <span class="material-symbols-outlined text-primary"
+                  style="font-variation-settings: &quot;FILL&quot; 1">star</span>
+                <span class="material-symbols-outlined text-primary"
+                  style="font-variation-settings: &quot;FILL&quot; 1">star</span>
+                <span class="material-symbols-outlined text-primary"
+                  style="font-variation-settings: &quot;FILL&quot; 1">star</span>
+                <span class="material-symbols-outlined text-primary"
+                  style="font-variation-settings: &quot;FILL&quot; 1">star</span>
+                <span class="material-symbols-outlined text-primary"
+                  style="font-variation-settings: &quot;FILL&quot; 1">star</span>
+              </div>
+              <p class="fs-4 fw-semibold text-dark mb-1 fst-italic" style="font-family: var(--font-headline)">
+                "O melhor cuidado clínico para o meu pet."
+              </p>
+              <p class="mb-0 text-vc-muted fw-bold" style="font-size: 0.9rem">
+                — Ayda Souza, Tutora de Popito.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="border-top border-4 bg-secondary">
+    <section class="container-fluid py-3" style="background-color: #f8f9fa;">
+
+      <div class="row align-items-start">
+
+        <div class="col-sm-4 d-flex justify-content-center"><!--COLUNA 1 COM CONTATO DA CLÍNICA--><!---->
+          <div class="row align-items-top">
+            <h3 class="text-success">Contatos</h3>
+            <p>- <a href="#" class="link-secondary">Instagram</a></p>
+            <p>- <a href="#" class="link-secondary">Facebook</a></p>
+            <p>- <a href="#" class="link-secondary">Whatsapp</a></p>
+            <p class="mb-0"><!----></p>
+          </div>
+        </div>
+        <div class="col-sm-4 d-flex justify-content-center"><!--COLUNA 2 "DESENVOLVEDORES" COM LINKEDIN DOS DEVS-->
+          <div class="row">
+            <h3 class="text-success">Desenvolvedores</h3>
+            <p>- <a href="https://www.linkedin.com/in/mateus-dias-4451b3381/" target="_blank"
+                class="link-secondary">Mateus de Araújo</a></p>
+            <p>- <a href="https://www.linkedin.com/in/mateusfrançatoledo" target="_blank" class="link-secondary">Mateus
+                França</a></p>
+            <p>- <a
+                href="https://www.linkedin.com/in/joão-fernando-marques?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
+                target="_blank" class="link-secondary">João Fernando</a></p>
+            <p>- <a href="#" class="link-secondary">Pedro</a></p>
+            <p>- <a href="https://www.linkedin.com/in/vesbafogadosia?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="link-secondary">Victor Manoel</a></p>
+            <p>- <a
+                href="https://www.linkedin.com/in/ygor-queiroz-a476922b2?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
+                target="_blank" class="link-secondary">Ygor Lopes</a></p>
+          </div>
+        </div>
+        <div class="col-4">
+          <p>&copy; 2026 VetCare. Todos os direitos reservados.</p>
+        </div>
+    </section>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Esta função cria uma lista pegando todas as "caixas de entrada" (inputs) que existem na página HTML
+    const inputs = document.querySelectorAll("input");
+
+    // O "forEach" pega a lista que acabamos de criar e repete a lógica abaixo para cada uma das caixinhas, individualmente.
+    inputs.forEach((input) => {
+      // "addEventListener" diz para a página ficar "escutando". Se o input for focado ("focus" = usuário clicou pra digitar), ele dispara o bloco abaixo:
+      input.addEventListener("focus", () => {
+        // Pega o "pai" (a div que embala a caixa de texto) e manda ele aplicar um efeito de Zoom (scale 1.01).
+        input.parentElement.style.transform = "scale(1.01)";
+        // Diz que essa mudança de zoom tem que acontecer suavemente, ao longo de 0.2 segundos (transition).
+        input.parentElement.style.transition = "transform 0.2s ease";
+      });
+
+      // Fica "escutando" para caso o input perca o foco ("blur" = usuário clicou fora da caixa de texto).
+      input.addEventListener("blur", () => {
+        // Remove o efeito de Zoom, devolvendo o elemento para o tamanho normal (escala 1 natural).
+        input.parentElement.style.transform = "scale(1)";
+      });
+    }); // Termina o loop (repetição para todos os inputs)
+  </script>
+</body>
+
+</html>
+```
