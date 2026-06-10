@@ -3,16 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VetCare - Home</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>VetCare - Home (Bootstrap)</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
     <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100..900&family=Manrope:wght@100..900&display=swap" rel="stylesheet"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    
     <link rel="stylesheet" href="style-home.css">
 </head>
-<body class="bg-[#f8fafc]">
+<body>
 
-   <header>
+<header>
         <section class="container-fluid py-2">
             <div class="row align-items-center">
                 <div class="col-12 col-md-2 d-flex justify-content-center">
@@ -31,142 +34,159 @@
         </section>
 </header>
 
-    <main class="w-full font-sans antialiased">
+    <main class="font-sans">
         
-        <section class="relative w-full min-h-[60vh] bg-gradient-to-br from-[#006653]/10 via-[#7da39a]/15 to-transparent flex items-center py-16 px-4 md:px-8">
-            <div class="max-w-[1140px] mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div class="flex flex-col space-y-6">
-                    <span class="bg-[#006653]/10 text-[#006653] font-semibold text-xs px-4 py-1.5 rounded-full w-fit uppercase tracking-wider">
-                        Clínica Veterinária & Pet Shop
-                    </span>
-                    <h1 class="text-[40px] md:text-[52px] leading-[1.1] text-slate-800 font-extrabold">
-                        O cuidado que seu melhor amigo merece.
-                    </h1>
-                    <p class="text-slate-600 leading-relaxed max-w-[500px]">
-                        Atendimento veterinário especializado e estética pet com profissionais qualificados para garantir saúde e felicidade.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="/agendar" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-4 rounded-xl shadow-md transition-all duration-200 text-center active:scale-[0.98]">
-                            Agendar Horário
-                        </a>
+        <section class="hero-section py-5 px-3">
+            <div class="container-xl">
+                <div class="row align-items-center g-5">
+                    
+                    <div class="col-12 col-md-6 d-flex flex-column gap-4">
+                        <span class="badge-pill align-self-start text-uppercase tracking-wider font-semibold">
+                            Clínica Veterinária & Pet Shop
+                        </span>
+                        <h1 class="hero-title fw-extrabold text-slate-800 m-0">
+                            O cuidado que seu melhor amigo merece.
+                        </h1>
+                        <p class="hero-text text-muted m-0">
+                            Atendimento veterinário especializado e estética pet com profissionais qualificados para garantir saúde e felicidade.
+                        </p>
+                        <div>
+                            <a href="/agendar" class="btn btn-primary btn-lg fw-bold px-5 py-3 shadow-md rounded-3">
+                                Agendar Horário
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <div class="relative w-full h-[350px] md:h-[480px] rounded-[32px] overflow-hidden shadow-lg bg-[url('src/images/cachorro_exame1.jpg')] bg-center bg-cover before:content-[''] before:absolute before:inset-0 before:bg-[#006653]/20 before:z-10"></div>
-            </div>
-        </section>
+                    
+                    <div class="col-12 col-md-6">
+                        <div class="hero-image-cube shadow-lg"></div>
+                    </div>
 
-        <section id="servicos" class="w-full py-20 px-4 md:px-8 bg-white">
-            <div class="max-w-[1140px] mx-auto w-full">
-                <div class="text-center max-w-[600px] mx-auto mb-16">
-                    <h2 class="text-3xl font-bold text-slate-800">Nossos Serviços</h2>
-                    <div class="h-1 w-20 bg-[#006653] mx-auto mt-4 rounded-full"></div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="group bg-[#f8fafc] border border-slate-200/60 p-8 rounded-[24px] hover:shadow-lg hover:-translate-y-1 transition-all duration-200">
-                        <div class="w-14 h-14 rounded-xl bg-[#006653]/10 text-[#006653] flex items-center justify-center mb-6">
-                            <span class="material-symbols-outlined text-[32px]">medical_services</span>
-                        </div>
-                        <h3 class="text-[22px] font-bold text-slate-800 mb-3">Consultas</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">Atendimento clínico especializado, vacinação e exames laboratoriais preventivos.</p>
-                    </div>
-                    <div class="group bg-[#f8fafc] border border-slate-200/60 p-8 rounded-[24px] hover:shadow-lg hover:-translate-y-1 transition-all duration-200">
-                        <div class="w-14 h-14 rounded-xl bg-[#006653]/10 text-[#006653] flex items-center justify-center mb-6">
-                            <span class="material-symbols-outlined text-[32px]">soap</span>
-                        </div>
-                        <h3 class="text-[22px] font-bold text-slate-800 mb-3">Banho & Tosa</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">Estética pet completa com produtos hipoalergênicos e profissionais carinhosos.</p>
-                    </div>
-                    <div class="group bg-[#f8fafc] border border-slate-200/60 p-8 rounded-[24px] hover:shadow-lg hover:-translate-y-1 transition-all duration-200">
-                        <div class="w-14 h-14 rounded-xl bg-[#006653]/10 text-[#006653] flex items-center justify-center mb-6">
-                            <span class="material-symbols-outlined text-[32px]">pets</span>
-                        </div>
-                        <h3 class="text-[22px] font-bold text-slate-800 mb-3">Pet Shop</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">Variedade em rações super premium, brinquedos, petiscos e acessórios.</p>
-                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="w-full py-24 px-4 md:px-8 bg-[#eff4ff]">
-            <div class="max-w-[1140px] mx-auto">
-                <div class="flex justify-between items-end mb-12">
+        <section id="servicos" class="bg-white py-5">
+            <div class="container-xl py-4">
+                <div class="text-center max-w-600 mx-auto mb-5">
+                    <h2 class="fw-bold text-slate-800">Nossos Serviços</h2>
+                    <div class="custom-divider mx-auto mt-3"></div>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-12 col-md-4">
+                        <div class="service-card p-4 h-100">
+                            <div class="icon-wrapper mb-4">
+                                <span class="material-symbols-outlined">medical_services</span>
+                            </div>
+                            <h3 class="fw-bold text-slate-800 fs-4 mb-2">Consultas</h3>
+                            <p class="text-muted small mb-0">Atendimento clínico especializado, vacinação e exames laboratoriais preventivos.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="service-card p-4 h-100">
+                            <div class="icon-wrapper mb-4">
+                                <span class="material-symbols-outlined">soap</span>
+                            </div>
+                            <h3 class="fw-bold text-slate-800 fs-4 mb-2">Banho & Tosa</h3>
+                            <p class="text-muted small mb-0">Estética pet completa com produtos hipoalergênicos e profissionais carinhosos.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="service-card p-4 h-100">
+                            <div class="icon-wrapper mb-4">
+                                <span class="material-symbols-outlined">pets</span>
+                            </div>
+                            <h3 class="fw-bold text-slate-800 fs-4 mb-2">Pet Shop</h3>
+                            <p class="text-muted small mb-0">Variedade em rações super premium, brinquedos, petiscos e acessórios.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonial-section py-5">
+            <div class="container-xl py-4">
+                
+                <div class="d-flex justify-content-between align-items-end mb-5">
                     <div>
-                        <h2 class="text-3xl font-bold text-slate-800 uppercase tracking-tight">Depoimentos de Clientes</h2>
-                        <p class="text-[#006653] font-semibold text-lg mt-1">(PROVA SOCIAL)</p>
+                        <h2 class="fw-bold text-slate-800 text-uppercase tracking-tight m-0">Depoimentos de Clientes</h2>
+                        <p class="custom-text-primary fw-semibold m-0 mt-1">(PROVA SOCIAL)</p>
                     </div>
-                    <div class="flex gap-3">
-                        <button class="w-12 h-12 rounded-full border border-slate-300 bg-white flex items-center justify-center text-[#006653] hover:bg-[#006653] hover:text-white transition-all shadow-sm">
-                            <span class="material-symbols-outlined">chevron_left</span>
-                        </button>
-                        <button class="w-12 h-12 rounded-full border border-slate-300 bg-white flex items-center justify-center text-[#006653] hover:bg-[#006653] hover:text-white transition-all shadow-sm">
-                            <span class="material-symbols-outlined">chevron_right</span>
-                        </button>
+                    <div class="d-flex gap-2">
+                        <button class="btn-nav-arrow"><span class="material-symbols-outlined">chevron_left</span></button>
+                        <button class="btn-nav-arrow"><span class="material-symbols-outlined">chevron_right</span></button>
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="bg-white p-8 rounded-[24px] shadow-sm border border-slate-100 relative">
-                        <span class="material-symbols-outlined text-[#006653]/10 text-[80px] absolute top-6 right-8 pointer-events-none">format_quote</span>
-                        <div class="flex gap-1 text-[#FFB800] mb-6">
-                            <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                            <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                            <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                            <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                            <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                        </div>
-                        <p class="text-slate-600 italic mb-8 relative z-10">"O atendimento é impecável. Dr. Ricardo cuidou do meu gato com uma dedicação incrível. O agendamento online facilita muito a vida!"</p>
-                        <div class="flex items-center gap-4">
-                            <img src="src/images/pessoa1.jpeg" class="w-12 h-12 rounded-full object-cover border-2 border-[#006653]/20" alt="pessoa 1">
-                            <div>
-                                <h4 class="font-bold text-slate-800">Mariana Silva</h4>
-                                <p class="text-xs text-slate-500">Tutor da Mel (Persa)</p>
+                <div class="row g-4">
+                    <div class="col-12 col-md-4">
+                        <div class="testimonial-card p-4 bg-white border-0 shadow-sm position-relative">
+                            <span class="material-symbols-outlined quote-bg-icon">format_quote</span>
+                            <div class="star-rating d-flex gap-1 mb-4">
+                                <span class="material-symbols-outlined fill-star">star</span>
+                                <span class="material-symbols-outlined fill-star">star</span>
+                                <span class="material-symbols-outlined fill-star">star</span>
+                                <span class="material-symbols-outlined fill-star">star</span>
+                                <span class="material-symbols-outlined fill-star">star</span>
+                            </div>
+                            <p class="text-muted fst-italic mb-4 position-relative z-1">"O atendimento é impecável. Dr. Ricardo cuidou do meu gato com uma dedicação incrível. O agendamento online facilita muito a vida!"</p>
+                            <div class="d-flex align-items-center gap-3">
+                                <img src="src/images/pessoa1.jpeg" class="avatar-img" alt="Mariana">
+                                <div>
+                                    <h5 class="fw-bold text-slate-800 m-0">Mariana Silva</h5>
+                                    <p class="text-muted small m-0">Tutor da Mel (Persa)</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="bg-white p-8 rounded-[24px] shadow-sm border border-slate-100 relative">
-                        <span class="material-symbols-outlined text-[#006653]/10 text-[80px] absolute top-6 right-8 pointer-events-none">format_quote</span>
-                        <div class="flex gap-1 text-[#FFB800] mb-6">
-                            <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                            <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                            <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                            <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                            <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                        </div>
-                        <p class="text-slate-600 italic mb-8 relative z-10">"Clínica moderna e muito higienizada. Me sinto seguro em trazer meus cães aqui. Os exames saem rápidos e a equipe é nota 10."</p>
-                        <div class="flex items-center gap-4">
-                            <img src="src/images/pessoa2.jpg" class="w-12 h-12 rounded-full object-cover border-2 border-[#006653]/20" alt="pessoa 2">
-                            <div>
-                                <h4 class="font-bold text-slate-800">Roberto Mendes</h4>
-                                <p class="text-xs text-slate-500">Tutor do Thor (Bulldog)</p>
+                    <div class="col-12 col-md-4">
+                        <div class="testimonial-card p-4 bg-white border-0 shadow-sm position-relative">
+                            <span class="material-symbols-outlined quote-bg-icon">format_quote</span>
+                            <div class="star-rating d-flex gap-1 mb-4">
+                                <span class="material-symbols-outlined fill-star">star</span>
+                                <span class="material-symbols-outlined fill-star">star</span>
+                                <span class="material-symbols-outlined fill-star">star</span>
+                                <span class="material-symbols-outlined fill-star">star</span>
+                                <span class="material-symbols-outlined fill-star">star</span>
+                            </div>
+                            <p class="text-muted fst-italic mb-4 position-relative z-1">"Clínica moderna e muito higienizada. Me sinto seguro em trazer meus cães aqui. Os exames saem rápidos e a equipe é nota 10."</p>
+                            <div class="d-flex align-items-center gap-3">
+                                <img src="src/images/pessoa2.jpg" class="avatar-img" alt="Roberto">
+                                <div>
+                                    <h5 class="fw-bold text-slate-800 m-0">Roberto Mendes</h5>
+                                    <p class="text-muted small m-0">Tutor do Thor (Bulldog)</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="bg-white p-8 rounded-[24px] shadow-sm border border-slate-100 relative">
-                        <span class="material-symbols-outlined text-[#006653]/10 text-[80px] absolute top-6 right-8 pointer-events-none">format_quote</span>
-                        <div class="flex gap-1 text-[#FFB800] mb-6">
-                            <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                            <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                            <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                            <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                            <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                        </div>
-                        <p class="text-slate-600 italic mb-8 relative z-10">"A melhor clínica da região. Fizemos a vacinação anual e foi super tranquilo. Atendimento humanizado e preço justo."</p>
-                        <div class="flex items-center gap-4">
-                            <img src="src/images/pessoa3.jpeg" class="w-12 h-12 rounded-full object-cover border-2 border-[#006653]/20" alt="pessoa 3">
-                            <div>
-                                <h4 class="font-bold text-slate-800">Carla Fonseca</h4>
-                                <p class="text-xs text-slate-500">Tutor da Luna (SRD)</p>
+                    <div class="col-12 col-md-4">
+                        <div class="testimonial-card p-4 bg-white border-0 shadow-sm position-relative">
+                            <span class="material-symbols-outlined quote-bg-icon">format_quote</span>
+                            <div class="star-rating d-flex gap-1 mb-4">
+                                <span class="material-symbols-outlined fill-star">star</span>
+                                <span class="material-symbols-outlined fill-star">star</span>
+                                <span class="material-symbols-outlined fill-star">star</span>
+                                <span class="material-symbols-outlined fill-star">star</span>
+                                <span class="material-symbols-outlined fill-star">star</span>
+                            </div>
+                            <p class="text-muted fst-italic mb-4 position-relative z-1">"A melhor clínica da região. Fizemos a vacinação anual e foi super tranquilo. Atendimento humanizado e preço justo."</p>
+                            <div class="d-flex align-items-center gap-3">
+                                <img src="src/images/pessoa3.jpeg" class="avatar-img" alt="Carla">
+                                <div>
+                                    <h5 class="fw-bold text-slate-800 m-0">Carla Fonseca</h5>
+                                    <p class="text-muted small m-0">Tutor da Luna (SRD)</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </section>
 
     </main>
 
-   <footer class="border-top border-4 bg-secondary">
+    <footer class="border-top border-4 bg-secondary">
     <section class="container-fluid py-3" style="background-color: #f8f9fa;">
 
         <div class="row align-items-start"> 
