@@ -52,8 +52,8 @@ def cadastrar_tutor(cpf, nome, telefone, email, senha):
     senha_criptografada = bcrypt.hashpw(senha_bytes, bcrypt.gensalt())
     
     novo_cliente = {
-        "nome": nome,
         "cpf": cpf_limpo,
+        "nome": nome,
         "telefone": telefone_limpo,
         "email": email,
         "senha": senha_criptografada, 
