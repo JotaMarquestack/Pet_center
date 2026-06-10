@@ -1,30 +1,44 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 from login_cadastro import cadastrar_tutor, login_tutor
+import os 
+from dotenv import load_dotenv
+from datetime import timedelta
+
+load_dotenv()
 
 app = Flask(__name__, 
             template_folder='../frontend', 
             static_folder='../frontend',
             static_url_path='')
 
-app.secret_key = 'vet_care_projeto_faculdade2026' #Isso aqui tecnicamente precisaria entrar no .env, não pode ir pra público, mas como é só pro projeto, por enquanto não tem BO
+app.secret_key = os.getenv('SECRET_KEY')
+app.permanent_session_lifetime = timedelta(days=30)
 
-
-
+#Rota de cadastro e login
 @app.route('/processar_login', methods=['POST'])
 def processar_login():
-    email_digitado = request.form.get('email')
-    senha_digitada = request.form.get('senha')
-    login_valido = login_tutor(email_digitado, senha_digitada)
-
-    print(f"TENTANDO LOGAR: {email_digitado}")
-    print(f"Resultado do Banco de Dados: {login_valido}")
+    email = request.form.get('email')
+    senha = request.form.get('senha')
+    lembrar = request.form.get('lembrar')
     
-    if login_valido:
-        session['usuario_logado'] = email_digitado
-        return redirect(url_for('index'))
+    resultado = login_tutor(email, senha)
     
+    if resultado:
+        session['usuario_logado'] = email
+        
+        if lembrar == 'on':
+            session.permanent = True
+        else:
+            session.permanent = False
+            
+        flash("Login realizado com sucesso!", "success")
+        return redirect(url_for('home')) 
+        
     else:
+        flash("E-mail ou senha incorretos.", "danger")
         return redirect(url_for('login_page'))
+
+
 
 @app.route('/processar_cadastro', methods=['POST'])
 def processar_cadastro():
@@ -33,21 +47,29 @@ def processar_cadastro():
 
     nome = dados.get('nome')
     email = dados.get('email')
+    cpf = dados.get('cpf')
+    telefone = dados.get('telefone')
+    senha = dados.get('senha')
 
-    resultado = cadastrar_tutor(nome, dados.get('cpf'), dados.get('telefone'), email, dados.get('senha'))
+    resultado = cadastrar_tutor(cpf, nome, telefone, email, senha)
     
     if resultado:
-        print("CADASTRO EXECUTADO COM SUCESSO.")
+        flash("Cadastro realizado com sucesso! Faça seu login.","sucess")
         return redirect(url_for('login_page'))
     else:
-        print("ERRO: O banco de dados retornou FALSE. Verifique se o e-mail já existe ou se a conexão falhou.")
+        flash("Erro no cadastro! Verifique seus dados ou se o CPF/E-mail já existem.","danger")
         return redirect(url_for('cadastro_page'))
+
+
 
 @app.route('/')
 def index():
-    if 'usuario_logado' in session:
-        return f"Bem-vindo, {session['usuario_logado']}! (Página em construção)"
-    return redirect(url_for('login_page'))
+    if 'usuario_logado' not in session:
+        flash("Acesso negado! Por favor, faça login primeiro.", "warning")
+        return redirect(url_for('login_page'))
+    
+    email_logado = session.get('usuario_logado')
+    return render_template('home.html', usuario=email_logado)
 
 @app.route('/login')
 def login_page():
@@ -57,5 +79,10 @@ def login_page():
 def cadastro_page():
     return render_template('cadastro.html')
 
+@app.route('/home')
+def home():
+    return render_template('home.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
+

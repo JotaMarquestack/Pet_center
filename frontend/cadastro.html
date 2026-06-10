@@ -50,59 +50,73 @@
                   aos serviços de saúde do seu pet.
                 </p>
               </div>
+
+              {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                  {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                      <strong>Aviso:</strong> {{ message }}
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                  {% endfor %}
+                {% endif %}
+              {% endwith %}
+
               <form action="/processar_cadastro" method="POST">
-                <div class="mb-3">
-                  <label for="nome" class="form-label text-vc-muted text-uppercase fw-bold"
-                    style="font-size: 0.85rem; letter-spacing: 0.05em">Nome Completo</label>
-                  <input type="text" name="nome" class="form-control rounded-3" id="nome" placeholder="Ex: João Silva"
-                    required />
-                </div>
-                <div class="mb-3">
-                  <label for="cpf" class="form-label text-vc-muted text-uppercase fw-bold"
-                    style="font-size: 0.85rem; letter-spacing: 0.05em">CPF</label>
-                  <input type="text" name="cpf" class="form-control rounded-3" id="cpf" placeholder="Ex: xxx.xxx.xxx-xx"
-                    required />
-                </div>
-                <div class="mb-3">
-                  <label for="email" class="form-label text-vc-muted text-uppercase fw-bold"
-                    style="font-size: 0.85rem; letter-spacing: 0.05em">E-mail</label>
-                  <input type="email" name="email" class="form-control rounded-3" id="email"
-                    placeholder="joao@exemplo.com" required />
-                </div>
-                <div class="row g-3 mb-3">
-                  <div class="col-md-6">
-                    <label for="phone" class="form-label text-vc-muted text-uppercase fw-bold"
-                      style="font-size: 0.85rem; letter-spacing: 0.05em">Telefone</label>
-                    <input type="tel" name="telefone" class="form-control rounded-3" id="phone"
-                      placeholder="(11) 99999-9999" required />
+                <form action="/processar_cadastro" method="POST">
+                  <div class="mb-3">
+                    <label for="nome" class="form-label text-vc-muted text-uppercase fw-bold"
+                      style="font-size: 0.85rem; letter-spacing: 0.05em">Nome Completo</label>
+                    <input type="text" name="nome" class="form-control rounded-3" id="nome" placeholder="Ex: João Silva"
+                      required />
                   </div>
-                  <div class="col-md-6">
-                    <label for="password" class="form-label text-vc-muted text-uppercase fw-bold"
-                      style="font-size: 0.85rem; letter-spacing: 0.05em">Senha</label>
-                    <input type="password" name="senha" class="form-control rounded-3" id="password"
-                      placeholder="••••••••" required />
+                  <div class="mb-3">
+                    <label for="cpf" class="form-label text-vc-muted text-uppercase fw-bold"
+                      style="font-size: 0.85rem; letter-spacing: 0.05em">CPF</label>
+                    <input type="text" name="cpf" class="form-control rounded-3" id="cpf"
+                      placeholder="Ex: xxx.xxx.xxx-xx" required />
                   </div>
+                  <div class="mb-3">
+                    <label for="email" class="form-label text-vc-muted text-uppercase fw-bold"
+                      style="font-size: 0.85rem; letter-spacing: 0.05em">E-mail</label>
+                    <input type="email" name="email" class="form-control rounded-3" id="email"
+                      placeholder="joao@exemplo.com" required />
+                  </div>
+                  <div class="row g-3 mb-3">
+                    <div class="col-md-6">
+                      <label for="phone" class="form-label text-vc-muted text-uppercase fw-bold"
+                        style="font-size: 0.85rem; letter-spacing: 0.05em">Telefone</label>
+                      <input type="tel" name="telefone" class="form-control rounded-3" id="phone"
+                        placeholder="(11) 99999-9999" required />
+                    </div>
+                    <div class="col-md-6">
+                      <label for="password" class="form-label text-vc-muted text-uppercase fw-bold"
+                        style="font-size: 0.85rem; letter-spacing: 0.05em">Senha</label>
+                      <input type="password" name="senha" class="form-control rounded-3" id="password"
+                        placeholder="••••••••" required />
+                    </div>
+                  </div>
+                  <div class="form-check mb-4 mt-3 d-flex align-items-start gap-2">
+                    <input class="form-check-input shadow-none mt-1" type="checkbox" id="terms" name="termos"
+                      required />
+                    <label class="form-check-label text-vc-muted" for="terms" style="font-size: 0.9rem">
+                      Eu concordo com os
+                      <a href="#" class="text-primary fw-bold text-decoration-none">Termos de Uso</a>
+                      e a
+                      <a href="#" class="text-primary fw-bold text-decoration-none">Política de Privacidade</a>
+                      da VetCare.
+                    </label>
+                  </div>
+                  <button type="submit" class="btn btn-primary w-100 py-3 rounded-3 fw-bold shadow-sm">
+                    Criar Conta
+                  </button>
+                </form>
+                <div class="mt-5 text-center">
+                  <p class="text-vc-muted">
+                    Já tem uma conta?
+                    <a href="login.html" class="text-primary fw-bold text-decoration-none">Faça login aqui</a>
+                  </p>
                 </div>
-                <div class="form-check mb-4 mt-3 d-flex align-items-start gap-2">
-                  <input class="form-check-input shadow-none mt-1" type="checkbox" id="terms" name="termos" required />
-                  <label class="form-check-label text-vc-muted" for="terms" style="font-size: 0.9rem">
-                    Eu concordo com os
-                    <a href="#" class="text-primary fw-bold text-decoration-none">Termos de Uso</a>
-                    e a
-                    <a href="#" class="text-primary fw-bold text-decoration-none">Política de Privacidade</a>
-                    da VetCare.
-                  </label>
-                </div>
-                <button type="submit" class="btn btn-primary w-100 py-3 rounded-3 fw-bold shadow-sm">
-                  Criar Conta
-                </button>
-              </form>
-              <div class="mt-5 text-center">
-                <p class="text-vc-muted">
-                  Já tem uma conta?
-                  <a href="login.html" class="text-primary fw-bold text-decoration-none">Faça login aqui</a>
-                </p>
-              </div>
             </div>
           </div>
           <div class="col-12 col-lg-6 d-none d-lg-block position-relative bg-light">
@@ -168,7 +182,9 @@
                 href="https://www.linkedin.com/in/joão-fernando-marques?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
                 target="_blank" class="link-secondary">João Fernando</a></p>
             <p>- <a href="#" class="link-secondary">Pedro</a></p>
-            <p>- <a href="https://www.linkedin.com/in/vesbafogadosia?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="link-secondary">Victor Manoel</a></p>
+            <p>- <a
+                href="https://www.linkedin.com/in/vesbafogadosia?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+                target="_blank" class="link-secondary">Victor Manoel</a></p>
             <p>- <a
                 href="https://www.linkedin.com/in/ygor-queiroz-a476922b2?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
                 target="_blank" class="link-secondary">Ygor Lopes</a></p>
