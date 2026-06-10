@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Agendamento</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="agendamento.css">
+</head>
+<body>
+
+    <header>
+        <section class="container-fluid py-2">
+            <div class="row align-items-center">
+                <div class="col-12 col-md-2 d-flex justify-content-center">
+                    <h3 class="fw-bold m-0" style="color: #ffffff;">VetCare</h3>
+                </div>
+                    <div class="col-12 col-sm-7 d-flex justify-content-sm-center justify-content-center gap-2 mb-2 mb-sm-0">
+                        <a class="btn btn-outline-light btn-sm" href="#" role="button">Home</a>
+                        <a class="btn btn-outline-light btn-sm" href="#" role="button">Services</a>
+                        <a class="btn btn-outline-light btn-sm" href="#" role="button">About Us</a>
+                        <a class="btn btn-outline-light btn-sm" href="#" role="button">Contact</a>
+                    </div>
+            </div>
+        </section>
+    </header>
+
+    <main class="main-content">
+        <div class="booking-container">
+            
+            <div class="booking-form-side">
+                <h2>Agendar um Horário</h2>
+                <p class="subtitle">Escolha o melhor momento para cuidar do seu pet.</p>
+
+                <form action="http://localhost:5000/agendar_pelo_site" method="POST">
+                    <input type="hidden" name="email_tutor" value="teste@gmail.com">                   
+                    <div class="form-group">
+                        <label for="pet_selecionado">Selecione o Pet</label>
+                        <select id="pet_selecionado" name="id_pet" required>
+                            <option value="" disabled selected>Escolha um pet...</option>
+                            <option value="PET-73A398">Rex (Golden Retriever)</option>
+                            <option value="PET-001ECD">Tibaute (Siamês)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="servico">Serviço Desejado</label>
+                        <select id="servico" name="servico" required>
+                            <option value="" disabled selected>Selecione o serviço...</option>
+                            <option value="Banho e Tosa">Banho e Tosa Completa</option>
+                            <option value="Apenas Banho">Apenas Banho</option>
+                            <option value="Consulta Veterinária">Consulta Veterinária</option>
+                            <option value="Corte de Unhas">Corte de Unhas</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="data">Data</label>
+                            <input type="date" id="data" name="data" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="hora">Horário</label>
+                            <input type="time" id="hora" name="hora" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="observacoes">Observações / Recomendações Especiais</label>
+                        <textarea id="observacoes" name="observacoes" placeholder="Ex: Tem medo de soprador, alergia a algum shampoo..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Confirmar Agendamento</button>
+                </form>
+
+                <div class="back-link">
+                    <a href="#">← Voltar para o Painel</a>
+                </div>
+            </div>
+
+            <div class="image-side">
+                <div class="image-text-container">
+                    <h1>Praticidade para o seu dia a dia.</h1>
+                    <p>Agende serviços, acompanhe o histórico e garanta o bem-estar do seu melhor amigo em poucos cliques.</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>
