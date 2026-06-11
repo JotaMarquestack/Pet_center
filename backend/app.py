@@ -100,21 +100,6 @@ def agendamento_page():
     return render_template('agendamento.html', usuario=email_logado)
 
 
-@app.route('/quem-somos')
-def quem_somos_page():
-    return render_template('quem-somos.html')
-
-
-@app.route('/servicos')
-def servicos_page():
-    return render_template('servicos.html')
-
-
-@app.route('/marketplace')
-def marketplace_page():
-    return render_template('marketplace.html')
-
-
 # Estas duas rotas estão listadas em 'rotas_publicas', logo o Flask não as bloqueia
 @app.route('/login')
 def login_page():
