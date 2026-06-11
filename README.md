@@ -99,7 +99,9 @@ pip install -r requirements.txt
 
 Crie um arquivo `.env` na raiz com:
 ```
-MONGO_URI=sua_string_de_conexao_mongodb
+URL_BANCO=sua_string_de_conexao_mongodb,
+SECRET_KEY=sua_key_aleatoria
+
 ```
 
 **5. Inicie o servidor**
