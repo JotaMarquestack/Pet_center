@@ -57,7 +57,6 @@ def cadastrar_tutor(cpf, nome, telefone, email, senha):
         "telefone": telefone_limpo,
         "email": email,
         "senha": senha_criptografada, 
-        "pets": []
     }
 
     col.insert_one(novo_cliente)
