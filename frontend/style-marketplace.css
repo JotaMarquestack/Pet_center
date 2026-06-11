@@ -1,0 +1,41 @@
+
+/* Configuração geral do cabeçalho */
+header {
+    background-color: #006653; /* Cor de fundo (que você alterou para o verde depois) */
+    width: 100%;               /* Força o menu a ocupar a largura inteira da tela */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02); /* Aquela sombra bem leve abaixo do menu */
+}  
+
+main {
+    background-color: #045a4a;
+}
+
+.item {
+    background-color: /*#00745e card*/#dbdfde;
+}
+
+/* Estilo base para transformar o botão em um quadrado para ícones */
+.btn-icone {
+    width: 65px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease-in-out;
+    overflow: hidden;
+}
+
+/* Força o anel de foco (outline) com opacidade máxima quando o botão estiver ATIVADO (toggled) */
+.btn-icone.active {
+    /* O box-shadow cria o efeito do focus-ring. rgba(255,255,255,1) garante 100% de opacidade branca */
+    box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 1) !important;
+    background-color: rgba(255, 255, 255, 0.2); /* Deixa o fundo levemente claro ao ativar */
+}
+
+span {
+    color: #ffffff; /* Cor do texto */
+    font-size: 0.75em; /* Tamanho da fonte */
+    font-weight: bold; /* Peso da fonte */
+}
+
+/* Força o carrossel e seus itens internos a ocuparem 100% da altura da coluna */

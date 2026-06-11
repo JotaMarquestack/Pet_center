@@ -1,0 +1,259 @@
+/* ============================================================
+   servicos.css — Página de Serviços | feat/servicos
+   Tailwind do Stitch convertido para CSS puro (padrão do projeto)
+   Paleta: #00685f (primary do Stitch) = #006653 (projeto @m)
+   ============================================================ */
+header {
+    background-color: #006653; /* Cor de fundo (que você alterou para o verde depois) */
+    width: 100%;               /* Força o menu a ocupar a largura inteira da tela */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02); /* Aquela sombra bem leve abaixo do menu */
+}
+
+/* O z-index do Header */
+.main-header {
+    z-index: 10; /* Garante que o menu fique sempre "na frente" do fundo se eles se sobrepuserem */
+}
+
+/* Fontes do Stitch */
+body {
+    font-family: 'Manrope', sans-serif;
+    background-color: #f8f9ff;
+    color: #0b1c30;
+}
+
+/* ── Hero ─────────────────────────────────────────────────── */
+.svc-hero {
+    background-color: #f8f9ff;
+}
+
+.svc-hero-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #006653;
+}
+
+.svc-hero-sub {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #3d4947;
+    max-width: 600px;
+}
+
+/* ── Cards de serviço ─────────────────────────────────────── */
+.svc-card {
+    background-color: #eff4ff;
+    border: 1px solid #bcc9c6;
+    border-radius: 0.75rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.svc-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px -5px rgba(0, 102, 83, 0.12);
+}
+
+.svc-icon-wrap {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: #d8e5e2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.svc-icon {
+    font-size: 2rem;
+    color: #006653;
+}
+
+.svc-card-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: #0b1c30;
+}
+
+.svc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.svc-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95rem;
+    color: #0b1c30;
+    padding: 6px 0;
+}
+
+.svc-check {
+    color: #006653;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.svc-card-label {
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #006653;
+    font-family: 'Hanken Grotesk', sans-serif;
+    margin-bottom: 0;
+}
+
+/* ── Seção Saiba Mais e Agende ────────────────────────────── */
+.svc-cta-section {
+    background-color: #dce9ff;
+}
+
+.svc-img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+}
+
+.svc-vaga-badge {
+    position: absolute;
+    bottom: -24px;
+    right: -24px;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid #bcc9c6;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.svc-vaga-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: #008378;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f3fffc;
+}
+
+.svc-vaga-label {
+    font-size: 0.78rem;
+    color: #3d4947;
+    font-weight: 600;
+    font-family: 'Hanken Grotesk', sans-serif;
+    letter-spacing: 0.04em;
+}
+
+.svc-vaga-time {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #006653;
+}
+
+.svc-cta-title {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #0b1c30;
+    margin-bottom: 16px;
+}
+
+.svc-cta-sub {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #3d4947;
+}
+
+.svc-feature-icon {
+    font-size: 1.8rem;
+    color: #006653;
+    flex-shrink: 0;
+}
+
+.svc-feature-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #006653;
+    letter-spacing: 0.04em;
+    margin-bottom: 4px;
+}
+
+.svc-feature-text {
+    font-size: 0.9rem;
+    color: #3d4947;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.svc-btn-agendar {
+    background-color: #006653;
+    color: #ffffff;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 16px;
+    border-radius: 0.75rem;
+    border: none;
+    box-shadow: 0 4px 20px rgba(0, 102, 83, 0.12);
+    transition: background-color 0.15s, transform 0.15s;
+    text-decoration: none;
+}
+
+.svc-btn-agendar:hover {
+    background-color: #004d3d;
+    color: #ffffff;
+    transform: scale(0.99);
+}
+
+/* ── Galeria ──────────────────────────────────────────────── */
+.svc-gallery-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: #0b1c30;
+}
+
+.svc-gallery-bar {
+    height: 4px;
+    width: 96px;
+    background-color: #006653;
+    border-radius: 2px;
+    margin-top: 8px;
+}
+
+.svc-gallery-item {
+    border-radius: 0.75rem;
+    overflow: hidden;
+    height: 220px;
+}
+
+.svc-gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.svc-gallery-item:hover img {
+    transform: scale(1.08);
+}
+
+/* ── Responsivo ───────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .svc-img {
+        height: 280px;
+    }
+
+    .svc-gallery-item {
+        height: 160px;
+    }
+
+    .svc-vaga-badge {
+        display: none !important;
+    }
+}

@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <link rel="stylesheet" href="style-login.css" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+  
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Hanken+Grotesk:wght@600;700&display=swap"
+    rel="stylesheet" />
+    
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
+
+  <title>Login</title>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+  
+  <header>
+    <section class="container-fluid py-2">
+      <div class="row align-items-center">
+        
+        <div class="col-12 col-md-2 d-flex justify-content-center">
+          <h3 class="fw-bold m-0" style="color: #ffffff">VetCare</h3>
+        </div>
+        
+        <div class="col-12 col-sm-7 d-flex justify-content-sm-center justify-content-center gap-2 mb-2 mb-sm-0">
+          <a class="btn btn-outline-light btn-sm" href="index.html" role="button">Início</a>
+          <a class="btn btn-outline-light btn-sm" href="quem-somos.html" role="button">Sobre Nós</a>
+          <a class="btn btn-outline-light btn-sm" href="servicos.html" role="button">Serviços</a>
+          <a class="btn btn-outline-light btn-sm" href="marketplace.html" role="button">Marketplace</a>
+        </div>
+        
+        <div class="col-12 col-sm-3 d-flex justify-content-center justify-content-sm-end">
+          <a class="btn btn-primary" href="/agendamento role="button">Marcar Consulta</a>
+        </div>
+      </div>
+    </section>
+  </header>
+
+  <main class="flex-grow-1 d-flex align-items-center justify-content-center py-5">
+    <div class="container-xl">
+      <div class="row g-5 align-items-center">
+        
+        <div class="col-lg-7 d-none d-lg-block pe-lg-4">
+          <div class="image-card-wrapper shadow-sm">
+            <img class="w-100 h-100 object-fit-cover" src="imagens/Gemini_Generated_Image_ryh08yryh08yryh0.png" />
+
+            <div class="position-absolute bottom-0 start-0 w-100 h-100 d-flex flex-column justify-content-end p-5"
+              style="
+                  background: linear-gradient(
+                    to top,
+                    rgba(0, 104, 95, 0.5),
+                    transparent
+                  );
+                ">
+              <h1 class="text-white fw-bold display-5 mb-2">
+                Cuidado excepcional para quem você ama.
+              </h1>
+              <p class="text-white fs-5 opacity-75 mb-0">
+                Acesse sua conta para gerenciar agendamentos e prontuários do
+                seu pet.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-lg-5 d-flex justify-content-center justify-content-lg-end">
+          <div class="card bg-white border border-light shadow-sm p-4 p-md-5 rounded-4 w-100" style="max-width: 480px">
+            
+            <div class="mb-4">
+              <h2 class="fw-bold mb-2 fs-3 text-dark">Bem-vindo de volta</h2>
+              <p class="text-vc-muted">
+                Por favor, insira suas credenciais para continuar.
+              </p>
+            </div>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                {% for category, message in messages %}
+                  <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                    <strong>Aviso:</strong> {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
+
+            <form action="/processar_login" method="POST">
+              
+              <div class="mb-3 input-wrapper">
+                <label class="form-label text-vc-muted text-uppercase fw-bold vc-label"
+                  style="font-size: 0.85rem; letter-spacing: 0.05em">E-mail</label>
+                <input type="email" name="email" class="form-control rounded-3" placeholder="seu@email.com"
+                  required />
+              </div>
+
+              <div class="mb-3 input-wrapper">
+                <label class="form-label text-vc-muted text-uppercase fw-bold vc-label"
+                  style="font-size: 0.85rem; letter-spacing: 0.05em">Senha</label>
+                <div class="position-relative">
+                  <input type="password" name="senha" class="form-control rounded-3 pe-5" placeholder="••••••••"
+                    required />
+                  <button
+                    class="btn btn-link text-secondary position-absolute top-50 end-0 translate-middle-y text-decoration-none shadow-none"
+                    type="button">
+                    <span class="material-symbols-outlined fs-5">visibility</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="d-flex align-items-center justify-content-between py-2 mb-3">
+                <div class="form-check">
+                  <input class="form-check-input shadow-none mt-1" type="checkbox" name="lembrar" id="rememberMe" />
+                  <label class="form-check-label text-vc-muted fw-semibold" for="rememberMe"
+                    style="font-size: 0.9rem; cursor: pointer">
+                    Lembrar de mim
+                  </label>
+                </div>
+                <a href="#" class="text-primary fw-semibold text-decoration-none vc-label"
+                  style="font-size: 0.9rem">Esqueci minha senha</a>
+              </div>
+
+              <button type="submit" class="btn btn-vetcare w-100 py-3 rounded-3 fw-bold shadow-sm mb-4">
+                Entrar
+              </button>
+            </form>
+
+            <div class="text-center border-top pt-4">
+              <p class="text-vc-muted mb-4">
+                Não tem uma conta?
+                <a href="/cadastro" class="text-primary fw-bold text-decoration-none">Criar uma conta</a>
+              </p>
+
+              <div class="row g-2">
+                <div class="col-6">
+                  <button
+                    class="btn btn-outline-vc w-100 py-2 d-flex align-items-center justify-content-center gap-2 fw-semibold rounded-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="M15.545 6.558a9.4 9.4 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.7 7.7 0 0 1 5.352 2.082l-2.284 2.284A4.35 4.35 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.8 4.8 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.7 3.7 0 0 0 1.599-2.431H8v-3.08z" />
+                    </svg>
+                    Google
+                  </button>
+                </div>
+                <div class="col-6">
+                  <button
+                    class="btn btn-outline-vc w-100 py-2 d-flex align-items-center justify-content-center gap-2 fw-semibold rounded-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516.024.034 1.52.087 2.475-1.258.955-1.345.762-2.391.728-2.43Zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422.212-2.189 1.675-2.789 1.698-2.854.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-1.082-.058-2.206.52-2.866.52-.66 0-1.65-.508-2.366-.508C4.656 3.905 3.9 4.315 3.44 4.867 2.22 6.326 1.536 8.514 2.196 11.127c.66 2.613 1.865 4.87 3.013 4.974 1.148.104 1.65-.623 2.89-.623 1.24 0 1.675.623 2.89.623 1.215 0 2.155-2.226 2.766-3.834.61-1.608.204-2.884.18-2.926Z" />
+                    </svg>
+                    Apple
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="border-top border-4 bg-secondary">
+    <section class="container-fluid py-3" style="background-color: #f8f9fa;">
+
+      <div class="row align-items-start">
+
+        <div class="col-sm-4 d-flex justify-content-center"><div class="row align-items-top">
+            <h3 class="text-success">Contatos</h3>
+            <p>- <a href="#" class="link-secondary">Instagram</a></p>
+            <p>- <a href="#" class="link-secondary">Facebook</a></p>
+            <p>- <a href="#" class="link-secondary">Whatsapp</a></p>
+            <p class="mb-0"></p>
+          </div>
+        </div>
+        
+        <div class="col-sm-4 d-flex justify-content-center"><div class="row">
+            <h3 class="text-success">Desenvolvedores</h3>
+            <p>- <a href="https://www.linkedin.com/in/mateus-dias-4451b3381/" target="_blank"
+                class="link-secondary">Mateus de Araújo</a></p>
+            <p>- <a href="https://www.linkedin.com/in/mateusfrançatoledo" target="_blank" class="link-secondary">Mateus
+                França</a></p>
+            <p>- <a
+                href="https://www.linkedin.com/in/joão-fernando-marques?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
+                target="_blank" class="link-secondary">João Fernando</a></p>
+            <p>- <a href="#" class="link-secondary">Pedro</a></p>
+            <p>- <a
+                href="https://www.linkedin.com/in/vesbafogadosia?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+                target="_blank" class="link-secondary">Victor Manoel</a></p>
+            <p>- <a
+                href="https://www.linkedin.com/in/ygor-queiroz-a476922b2?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
+                target="_blank" class="link-secondary">Ygor Lopes</a></p>
+          </div>
+        </div>
+        
+        <div class="col-4">
+          <p>&copy; 2026 VetCare. Todos os direitos reservados.</p>
+        </div>
+    </section>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmxc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+
+  <script>
+    // document.querySelectorAll: Procura no código inteiro e cria uma lista de todos os itens com classe "form-control" (nesse caso, suas caixas de e-mail e senha).
+    const inputs = document.querySelectorAll(".form-control");
+
+    // forEach: Uma repetição que vai passar a regra abaixo para cada caixa de texto achada acima.
+    inputs.forEach((input) => {
+      
+      // Quando a pessoa clicar dentro da caixa para começar a digitar (evento "focus"):
+      input.addEventListener("focus", () => {
+        // closest: Volta nas tags pai procurando a caixa mais próxima chamada "input-wrapper".
+        const wrapper = input.closest(".input-wrapper");
+        if (wrapper) {
+          // Dentro desse wrapper pai, ele busca quem é o texto de rótulo (o <label>).
+          const label = wrapper.querySelector("label");
+          // E joga uma classe nele chamada "focus-label-color", provavelmente configurada no seu arquivo CSS, pra mudar a cor do texto.
+          if (label) label.classList.add("focus-label-color");
+        }
+      });
+
+      // Quando a pessoa clicar fora da caixa (evento "blur"):
+      input.addEventListener("blur", () => {
+        const wrapper = input.closest(".input-wrapper");
+        if (wrapper) {
+          const label = wrapper.querySelector("label");
+          // Remove a cor personalizada para que o texto volte pro cinza normal.
+          if (label) label.classList.remove("focus-label-color");
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

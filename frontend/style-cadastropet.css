@@ -1,0 +1,43 @@
+
+
+/* Configuração geral do cabeçalho */
+header {
+    background-color: #006653; /* Cor de fundo (que você alterou para o verde depois) */
+    width: 100%;               /* Força o menu a ocupar a largura inteira da tela */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02); /* Aquela sombra bem leve abaixo do menu */
+}  
+
+/* O z-index do Header */
+.main-header {
+    z-index: 10; /* Garante que o menu fique sempre "na frente" do fundo se eles se sobrepuserem */
+}
+
+.text-vetcare { color: #248277 !important; }
+.bg-vetcare { background-color: #248277 !important; color: white !important; }
+.bg-vetcare-light { background-color: #dcedee !important; }
+.border-vetcare { border-color: #248277 !important; }
+    
+.form-control:focus, .form-select:focus {
+    border-color: #248277;
+    box-shadow: 0 0 0 0.25rem rgba(36, 130, 119, 0.25);
+}
+.btn-outline-vetcare {
+    color: #6c757d;
+    border-color: #dee2e6;
+}
+.btn-outline-vetcare:hover {
+    background-color: #f8f9fa;
+    border-color: #248277;
+    color: #248277;
+}
+.btn-check:checked + .btn-outline-vetcare {
+    background-color: #dcedee;
+    border-color: #248277;
+    color: #248277;
+    font-weight: bold;
+}
+
+.text-vetcare { color: #248277 !important; }
+.bg-vetcare { background-color: #248277 !important; color: white !important; }
+.bg-vetcare-light { background-color: #dcedee !important; }
+.pet-bloco { border-left: 5px solid #248277; padding-left: 20px; margin-bottom: 40px; position: relative; }

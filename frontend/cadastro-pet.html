@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VetCare - Registro dos Pets</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style-cadastropet.css">
+</head>
+<body>
+
+<header>
+        <section class="container-fluid py-2">
+            <div class="row align-items-center">
+                <div class="col-12 col-md-2 d-flex justify-content-center">
+                    <h3 class="fw-bold m-0" style="color: #ffffff;">VetCare</h3>
+                </div>
+                    <div class="col-12 col-sm-7 d-flex justify-content-sm-center justify-content-center gap-2 mb-2 mb-sm-0">
+                        <a class="btn btn-outline-light btn-sm " href="index.html" role="button">Início</a>
+                        <a class="btn btn-outline-light btn-sm" href="quem-somos.html" role="button">Sobre Nós</a>
+                        <a class="btn btn-outline-light btn-sm" href="servicos.html" role="button">Serviços</a>
+                        <a class="btn btn-outline-light btn-sm" href="marketplace.html" role="button">Marketplace</a>
+                    </div>
+                    <div class="col-12 col-sm-3 d-flex justify-content-center justify-content-sm-end">
+                        <a class="btn btn-primary" href="/agendamento" role="button">Marcar Consulta</a>                    
+                    </div>
+            </div>
+        </section>
+</header>
+
+
+<main class="container py-5 my-4">
+    <div class="mb-5">
+        <h1 class="display-5 fw-bold mb-2" style="color: #1a1a2e;">Registro dos Seus Pets</h1>
+        <p class="text-muted fs-5">Adicione as informações de quantos pets você tiver antes de continuar.</p>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-lg-12">
+            <form class="card border-0 shadow-sm rounded-4 p-4 p-md-5" action="/processar_cadastro_pet" method="POST">
+                
+                <div id="container-pets">
+                    
+                    <div class="pet-bloco" id="pet-1">
+                        <div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom">
+                            <h3 class="h4 fw-bold mb-0 text-vetcare">🐾 Informações do Pet #1</h3>
+                        </div>
+
+                        <div class="row g-4">
+                            <div class="col-md-4">
+                                <label class="form-label small fw-bold text-muted text-uppercase">Nome do Pet</label>
+                                <input type="text" name="nome_pet[]" class="form-control bg-light border-0" placeholder="Ex: Bob" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label small fw-bold text-muted text-uppercase">Espécie</label>
+                                <select name="especie[]" class="form-select bg-light border-0" required>
+                                    <option selected disabled value="">Selecione...</option>
+                                    <option value="cao">Cão</option>
+                                    <option value="gato">Gato</option>
+                                    <option value="ave">Ave</option>
+                                    <option value="outros">Outros</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label small fw-bold text-muted text-uppercase">Raça</label>
+                                <input type="text" name="raca[]" class="form-control bg-light border-0" placeholder="Ex: Poodle">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label small fw-bold text-muted text-uppercase">Gênero</label>
+                                <select name="genero[]" class="form-select bg-light border-0">
+                                    <option value="MACHO">Macho</option>
+                                    <option value="FÊMEA">Fêmea</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label small fw-bold text-muted text-uppercase">Peso (KG)</label>
+                                <input type="number" step="0.1" name="peso[]" class="form-control bg-light border-0" placeholder="0.0">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label small fw-bold text-muted text-uppercase">Pelagem / Cor</label>
+                                <input type="text" name="cor[]" class="form-control bg-light border-0" placeholder="Ex: Mel">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="mb-5">
+                    <button type="button" id="btn-adicionar" class="btn btn-outline-success fw-bold">
+                        ➕ Adicionar Outro Pet neste cadastro
+                    </button>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                    <a href="/logout" class="btn btn-light text-muted fw-bold">Sair / Cancelar</a>
+                    <button type="submit" class="btn bg-vetcare px-5 fw-bold text-white">Salvar Todos os Pets</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+    
+</main>
+
+<script>
+    let contadorPets = 1;
+
+    document.getElementById('btn-adicionar').addEventListener('click', function() {
+        contadorPets++;
+        
+        // Clona o primeiro bloco de pet
+        const novoBloco = document.getElementById('pet-1').cloneNode(true);
+        
+        // Atualiza o ID e o título do novo bloco
+        novoBloco.id = 'pet-' + contadorPets;
+        novoBloco.querySelector('h3').innerText = '🐾 Informações do Pet #' + contadorPets;
+        
+        // Limpa os valores dos inputs clonados
+        novoBloco.querySelectorAll('input').forEach(input => input.value = '');
+        novoBloco.querySelectorAll('select').forEach(select => select.selectedIndex = 0);
+        
+        // Cria um botão para remover o bloco caso o usuário mude de ideia
+        const btnRemover = document.createElement('button');
+        btnRemover.type = 'button';
+        btnRemover.className = 'btn btn-sm btn-danger position-absolute top-0 end-0 mt-2';
+        btnRemover.innerText = 'Remover';
+        btnRemover.onclick = function() {
+            novoBloco.remove();
+        };
+        novoBloco.appendChild(btnRemover);
+
+        // Adiciona o novo bloco ao container
+        document.getElementById('container-pets').appendChild(novoBloco);
+    });
+</script>
+</body>
+</html>
