@@ -1,44 +1,48 @@
 from database import conectar_banco
 import uuid
+from bson import ObjectId  # Necessário para ler o ID do MongoDB
 
 def agendar_consulta(email_tutor, id_pet, data_consulta, hora_consulta, motivo):
     db = conectar_banco()
     if db is None:
         return "Erro de conexão com o banco."
     
-    col_clientes = db.get_collection("clientes")
+    col_pets = db.get_collection("pets")
     col_agendamentos = db.get_collection("agendamentos")
 
-    print("\n--- INVESTIGAÇÃO MONGODB ---")
-    print(f"Buscando Email: '{email_tutor}' | Pet: '{id_pet}'")
+    print("\n--- INVESTIGAÇÃO MONGODB (AGENDAMENTO) ---")
+    print(f"Buscando Email do Tutor: '{email_tutor}' | ID do Pet: '{id_pet}'")
     
-    tutor_so_email = col_clientes.find_one({"email": email_tutor})
-    if tutor_so_email:
-        print("Passo A: Tutor encontrado pelo e-mail!")
-        print(f"Lista de pets no banco: {tutor_so_email.get('pets', [])}")
-    else:
-        print("Passo A FALHOU: O banco diz que esse e-mail não existe na collection 'clientes'.")
+    # Como o HTML enviou o ID gerado pelo Mongo, precisamos convertê-lo para ObjectId
+    try:
+        id_pet_objeto = ObjectId(id_pet)
+    except Exception:
+        # Caso o ID não venha no formato padrão do Mongo (ex: vindo de testes antigos)
+        id_pet_objeto = id_pet
 
-    vinculo_valido = col_clientes.find_one({
-        "email": email_tutor,
-        "pets.id_pet": id_pet
+    # Passo Único e Seguro: O pet existe e pertence a esse tutor?
+    pet_valido = col_pets.find_one({
+        "_id": id_pet_objeto,
+        "email_tutor": email_tutor
     })
 
-    if vinculo_valido:
-        print("Passo B: Vínculo Pet+Tutor validado!")
+    if pet_valido:
+        print(f"Sucesso: O pet '{pet_valido.get('nome_pet')}' foi encontrado e pertence a {email_tutor}!")
     else:
-        print("Passo B FALHOU: O banco não conseguiu cruzar o e-mail com o ID do Pet.")
-    print("----------------------------\n")
+        print("FALHA: Nenhum pet com esse ID pertence a este e-mail na collection 'pets'.")
+    print("------------------------------------------\n")
 
-    if not vinculo_valido:
-        return "Erro de Validação: Tutor não encontrado ou o Pet informado não pertence a este tutor."
+    if not pet_valido:
+        return "Erro de Validação: O pet informado não foi encontrado ou não pertence a este tutor."
     
+    # Gera um identificador único amigável para a consulta
     id_consulta = f"CONS-{uuid.uuid4().hex[:6].upper()}"
 
     novo_agendamento = {
         "id_consulta": id_consulta,
         "email_tutor": email_tutor,
-        "id_pet": id_pet,
+        "id_pet": id_pet, # Mantemos salvo como string para facilitar futuras buscas
+        "nome_pet": pet_valido.get("nome_pet"), # Prática NoSQL: salvar o nome direto ajuda na performance
         "data": data_consulta,
         "hora": hora_consulta,
         "motivo": motivo,
@@ -47,4 +51,3 @@ def agendar_consulta(email_tutor, id_pet, data_consulta, hora_consulta, motivo):
 
     col_agendamentos.insert_one(novo_agendamento)
     return f"Sucesso! Consulta {id_consulta} agendada para o dia {data_consulta} às {hora_consulta}."
-
